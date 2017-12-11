@@ -1,0 +1,19 @@
+﻿.map_left{ width:400px; height:100%; overflow:hidden; position:absolute; left:0; top:0; background:#fff;}
+.map_right{ padding-left:400px; height:100%;}
+.table-container{ height:100%; position:relative;}
+html,body,form{ height:100%; margin:0; padding-top:0; padding-bottom:0;}
+.mainbody{  margin:0; padding-top:0; padding-bottom:0;}
+.search_btn{ height:30px; border:1px solid #eee; background:#fafafa; color:#333; display:inline-block; vertical-align:top; line-height:30px; padding:0 15px; text-align:center;}
+.toolbar .l-list .menu-list{ float:right;}
+.toolbar-wrap1{ width:auto; padding:0 5px; position:absolute; left:0; top:0; width:390px;}
+.single-select .select-items{ left:auto; left:0;}
+.single-select .arrow{ }
+.jcd_list{ padding:0 5px;}
+.ltable{ min-width:373px; margin-bottom:10px; }
+.jcd_list{ margin-top:156px; overflow:scroll; height:75%;}
+.ltable label{ white-space:nowrap; overflow:hidden; display:block; text-overflow:ellipsis;-o-text-overflow:ellipsis;text-align:center;}
+.win_ifram{ position:absolute; display:none; left:200px; top:10px; background:#fff; z-index:100; width:400px; height:450px; border:1px solid #F3F3F3; border-radius:8px;}
+.wini_head{ height:30px; line-height:30px; padding:0 10px; font-size:14px; border-bottom:1px solid #F3F3F3; position:relative;}
+.winih_close{ position:absolute; right:10px; top:7px; background:url(/admin/skin/default/skin_icons.png) no-repeat -55px -195px; width:16px; height:16px;}
+.wini_main{ height:421px; overflow:hidden; padding:10px;}
+.tab-content dl dd{ margin-left:80px;}

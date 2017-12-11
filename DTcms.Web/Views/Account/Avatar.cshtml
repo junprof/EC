@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>编辑头像</title>
+    <link href="~/Content/fineuploader.css" rel="stylesheet" />
+    <link href="~/admin/skin/default/style.css" rel="stylesheet"/>
+    <link href="~/Content/jquery.Jcrop.min.css" rel="stylesheet" />
+    <link href="~/Content/crop.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script src="~/Scripts/jquery/jquery.form.min.js"></script>
+    <script src="~/Scripts/jquery/jquery.fineuploader-3.1.min.js"></script>
+    <script src="~/Scripts/jquery/jquery.Jcrop.min.js"></script>
+    <script src="~/Scripts/crop.js"></script>
+</head>
+<body>
+    <div id="message">@ViewBag.Msg</div>
+    <div id="crop_wrap" >
+        <div id="jquery-wrapped-fine-uploader"></div>
+        <div id="crop_holder">
+            <div id="crop_area" class="border">
+                <img id="crop_image" alt="" src="" class="preview-image" style="display: none" />
+            </div>
+            <div id="preview_area">
+                <div id="preview_title">当前头像</div>
+                <div id="preview_large_text" class="preview-text">180px × 180px</div>
+                <div id="preview_large_wrap" class="border">
+                    <img id="preview_large" alt="" src="@ViewBag.Path" class="preview-image" style="" />
+                </div>
+            </div>
+        </div>
+        <div id="crop_operation" style="display: none;">
+            <form id="form_crop" action="/Account/Avatar" method="post">
+                <input type="hidden" name="x" id="x">
+                <input type="hidden" name="y" id="y">
+                <input type="hidden" name="w" id="w">
+                <input type="hidden" name="h" id="h">
+                <input type="hidden" name="imgsrc" id="imgsrc">
+                <input type="hidden" name="uid" id="uid" value="@ViewBag.uid" />
+                <input id="crop_operation_submit" type="submit" class="btn" value="保存" /><span id="crop_operation_msg" style="display: none" class="green"></span>
+            </form>
+        </div>
+        <div id="croped_message" class="green"></div>
+    </div>
+</body>
+</html>

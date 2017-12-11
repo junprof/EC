@@ -1,0 +1,1149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71ADD9EF-D3AF-4AFE-8427-D10A52BAAF90}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DTcms.Web</RootNamespace>
+    <AssemblyName>DTcms.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP, Version=4.11.2.31351, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Senparc.Weixin.MP.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\center.aspx" />
+    <Content Include="admin\electricity\deviceloginfo.aspx" />
+    <Content Include="admin\electricity\electricity_add.aspx" />
+    <Content Include="admin\electricity\deviceInspection.aspx" />
+    <Content Include="admin\electricity\electricity_list.aspx" />
+    <Content Include="admin\electricity\electrictydatareport.html" />
+    <Content Include="admin\electricity\history_list.aspx" />
+    <Content Include="admin\electricity\map_show.aspx" />
+    <Content Include="admin\electricity\msg_list.aspx" />
+    <Content Include="admin\electricity\style.css" />
+    <Content Include="admin\electricity\warning_list.aspx" />
+    <Content Include="admin\ie6update.html" />
+    <Content Include="admin\index.aspx" />
+    <Content Include="admin\js\common.js" />
+    <Content Include="admin\js\uploader.js" />
+    <Content Include="admin\js\layindex.js" />
+    <Content Include="admin\js\laymain.js" />
+    <Content Include="admin\login.aspx" />
+    <Content Include="admin\manager\manager_edit.aspx" />
+    <Content Include="admin\manager\manager_list.aspx" />
+    <Content Include="admin\manager\manager_log.aspx" />
+    <Content Include="admin\manager\manager_pwd.aspx" />
+    <Content Include="admin\manager\role_edit.aspx" />
+    <Content Include="admin\manager\role_list.aspx" />
+    <Content Include="admin\settings\nav_edit.aspx" />
+    <Content Include="admin\settings\nav_list.aspx" />
+    <Content Include="admin\skin\base.css" />
+    <Content Include="admin\skin\default\ChinaTelecom.png" />
+    <Content Include="admin\skin\default\ChinaTelecomLogo.png" />
+    <Content Include="admin\skin\default\ie_update.jpg" />
+    <Content Include="admin\skin\default\loadimg.gif" />
+    <Content Include="admin\skin\default\logo.png" />
+    <Content Include="admin\skin\default\nav\home.png" />
+    <Content Include="admin\skin\default\nav\order.png" />
+    <Content Include="admin\skin\default\nav\pus.png" />
+    <Content Include="admin\skin\default\nav\sys.png" />
+    <Content Include="admin\skin\default\nav\user.png" />
+    <Content Include="admin\skin\default\order_speed.gif" />
+    <Content Include="admin\skin\default\skin_icons.png" />
+    <Content Include="admin\skin\default\style.css" />
+    <Content Include="admin\skin\default\sysLogo.png" />
+    <Content Include="admin\skin\default\valid_icons.png" />
+    <Content Include="admin\skin\layout.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\crop.min.css" />
+    <Content Include="Content\fineuploader.css" />
+    <Content Include="Content\Jcrop.gif" />
+    <Content Include="Content\jquery.Jcrop.min.css" />
+    <Content Include="Content\loading.gif" />
+    <Content Include="Content\Site.css" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="css\image1.gif" />
+    <Content Include="css\image2.gif" />
+    <Content Include="css\jcrop.gif" />
+    <Content Include="css\jquery.jcrop.css" />
+    <Content Include="css\meneame.jpg" />
+    <Content Include="css\pagination.css" />
+    <Content Include="css\validate.css" />
+    <Content Include="css\valid_icons.png" />
+    <Content Include="editor\kindeditor-min.js" />
+    <Content Include="editor\kindeditor.js" />
+    <Content Include="editor\lang\ar.js" />
+    <Content Include="editor\lang\en.js" />
+    <Content Include="editor\lang\ko.js" />
+    <Content Include="editor\lang\ru.js" />
+    <Content Include="editor\lang\zh-CN.js" />
+    <Content Include="editor\lang\zh-TW.js" />
+    <Content Include="editor\plugins\anchor\anchor.js" />
+    <Content Include="editor\plugins\autoheight\autoheight.js" />
+    <Content Include="editor\plugins\baidumap\baidumap.js" />
+    <Content Include="editor\plugins\baidumap\index.html" />
+    <Content Include="editor\plugins\baidumap\map.html" />
+    <Content Include="editor\plugins\clearhtml\clearhtml.js" />
+    <Content Include="editor\plugins\code\code.js" />
+    <Content Include="editor\plugins\code\prettify.css" />
+    <Content Include="editor\plugins\code\prettify.js" />
+    <Content Include="editor\plugins\emoticons\emoticons.js" />
+    <Content Include="editor\plugins\emoticons\images\0.gif" />
+    <Content Include="editor\plugins\emoticons\images\1.gif" />
+    <Content Include="editor\plugins\emoticons\images\10.gif" />
+    <Content Include="editor\plugins\emoticons\images\100.gif" />
+    <Content Include="editor\plugins\emoticons\images\101.gif" />
+    <Content Include="editor\plugins\emoticons\images\102.gif" />
+    <Content Include="editor\plugins\emoticons\images\103.gif" />
+    <Content Include="editor\plugins\emoticons\images\104.gif" />
+    <Content Include="editor\plugins\emoticons\images\105.gif" />
+    <Content Include="editor\plugins\emoticons\images\106.gif" />
+    <Content Include="editor\plugins\emoticons\images\107.gif" />
+    <Content Include="editor\plugins\emoticons\images\108.gif" />
+    <Content Include="editor\plugins\emoticons\images\109.gif" />
+    <Content Include="editor\plugins\emoticons\images\11.gif" />
+    <Content Include="editor\plugins\emoticons\images\110.gif" />
+    <Content Include="editor\plugins\emoticons\images\111.gif" />
+    <Content Include="editor\plugins\emoticons\images\112.gif" />
+    <Content Include="editor\plugins\emoticons\images\113.gif" />
+    <Content Include="editor\plugins\emoticons\images\114.gif" />
+    <Content Include="editor\plugins\emoticons\images\115.gif" />
+    <Content Include="editor\plugins\emoticons\images\116.gif" />
+    <Content Include="editor\plugins\emoticons\images\117.gif" />
+    <Content Include="editor\plugins\emoticons\images\118.gif" />
+    <Content Include="editor\plugins\emoticons\images\119.gif" />
+    <Content Include="editor\plugins\emoticons\images\12.gif" />
+    <Content Include="editor\plugins\emoticons\images\120.gif" />
+    <Content Include="editor\plugins\emoticons\images\121.gif" />
+    <Content Include="editor\plugins\emoticons\images\122.gif" />
+    <Content Include="editor\plugins\emoticons\images\123.gif" />
+    <Content Include="editor\plugins\emoticons\images\124.gif" />
+    <Content Include="editor\plugins\emoticons\images\125.gif" />
+    <Content Include="editor\plugins\emoticons\images\126.gif" />
+    <Content Include="editor\plugins\emoticons\images\127.gif" />
+    <Content Include="editor\plugins\emoticons\images\128.gif" />
+    <Content Include="editor\plugins\emoticons\images\129.gif" />
+    <Content Include="editor\plugins\emoticons\images\13.gif" />
+    <Content Include="editor\plugins\emoticons\images\130.gif" />
+    <Content Include="editor\plugins\emoticons\images\131.gif" />
+    <Content Include="editor\plugins\emoticons\images\132.gif" />
+    <Content Include="editor\plugins\emoticons\images\133.gif" />
+    <Content Include="editor\plugins\emoticons\images\134.gif" />
+    <Content Include="editor\plugins\emoticons\images\14.gif" />
+    <Content Include="editor\plugins\emoticons\images\15.gif" />
+    <Content Include="editor\plugins\emoticons\images\16.gif" />
+    <Content Include="editor\plugins\emoticons\images\17.gif" />
+    <Content Include="editor\plugins\emoticons\images\18.gif" />
+    <Content Include="editor\plugins\emoticons\images\19.gif" />
+    <Content Include="editor\plugins\emoticons\images\2.gif" />
+    <Content Include="editor\plugins\emoticons\images\20.gif" />
+    <Content Include="editor\plugins\emoticons\images\21.gif" />
+    <Content Include="editor\plugins\emoticons\images\22.gif" />
+    <Content Include="editor\plugins\emoticons\images\23.gif" />
+    <Content Include="editor\plugins\emoticons\images\24.gif" />
+    <Content Include="editor\plugins\emoticons\images\25.gif" />
+    <Content Include="editor\plugins\emoticons\images\26.gif" />
+    <Content Include="editor\plugins\emoticons\images\27.gif" />
+    <Content Include="editor\plugins\emoticons\images\28.gif" />
+    <Content Include="editor\plugins\emoticons\images\29.gif" />
+    <Content Include="editor\plugins\emoticons\images\3.gif" />
+    <Content Include="editor\plugins\emoticons\images\30.gif" />
+    <Content Include="editor\plugins\emoticons\images\31.gif" />
+    <Content Include="editor\plugins\emoticons\images\32.gif" />
+    <Content Include="editor\plugins\emoticons\images\33.gif" />
+    <Content Include="editor\plugins\emoticons\images\34.gif" />
+    <Content Include="editor\plugins\emoticons\images\35.gif" />
+    <Content Include="editor\plugins\emoticons\images\36.gif" />
+    <Content Include="editor\plugins\emoticons\images\37.gif" />
+    <Content Include="editor\plugins\emoticons\images\38.gif" />
+    <Content Include="editor\plugins\emoticons\images\39.gif" />
+    <Content Include="editor\plugins\emoticons\images\4.gif" />
+    <Content Include="editor\plugins\emoticons\images\40.gif" />
+    <Content Include="editor\plugins\emoticons\images\41.gif" />
+    <Content Include="editor\plugins\emoticons\images\42.gif" />
+    <Content Include="editor\plugins\emoticons\images\43.gif" />
+    <Content Include="editor\plugins\emoticons\images\44.gif" />
+    <Content Include="editor\plugins\emoticons\images\45.gif" />
+    <Content Include="editor\plugins\emoticons\images\46.gif" />
+    <Content Include="editor\plugins\emoticons\images\47.gif" />
+    <Content Include="editor\plugins\emoticons\images\48.gif" />
+    <Content Include="editor\plugins\emoticons\images\49.gif" />
+    <Content Include="editor\plugins\emoticons\images\5.gif" />
+    <Content Include="editor\plugins\emoticons\images\50.gif" />
+    <Content Include="editor\plugins\emoticons\images\51.gif" />
+    <Content Include="editor\plugins\emoticons\images\52.gif" />
+    <Content Include="editor\plugins\emoticons\images\53.gif" />
+    <Content Include="editor\plugins\emoticons\images\54.gif" />
+    <Content Include="editor\plugins\emoticons\images\55.gif" />
+    <Content Include="editor\plugins\emoticons\images\56.gif" />
+    <Content Include="editor\plugins\emoticons\images\57.gif" />
+    <Content Include="editor\plugins\emoticons\images\58.gif" />
+    <Content Include="editor\plugins\emoticons\images\59.gif" />
+    <Content Include="editor\plugins\emoticons\images\6.gif" />
+    <Content Include="editor\plugins\emoticons\images\60.gif" />
+    <Content Include="editor\plugins\emoticons\images\61.gif" />
+    <Content Include="editor\plugins\emoticons\images\62.gif" />
+    <Content Include="editor\plugins\emoticons\images\63.gif" />
+    <Content Include="editor\plugins\emoticons\images\64.gif" />
+    <Content Include="editor\plugins\emoticons\images\65.gif" />
+    <Content Include="editor\plugins\emoticons\images\66.gif" />
+    <Content Include="editor\plugins\emoticons\images\67.gif" />
+    <Content Include="editor\plugins\emoticons\images\68.gif" />
+    <Content Include="editor\plugins\emoticons\images\69.gif" />
+    <Content Include="editor\plugins\emoticons\images\7.gif" />
+    <Content Include="editor\plugins\emoticons\images\70.gif" />
+    <Content Include="editor\plugins\emoticons\images\71.gif" />
+    <Content Include="editor\plugins\emoticons\images\72.gif" />
+    <Content Include="editor\plugins\emoticons\images\73.gif" />
+    <Content Include="editor\plugins\emoticons\images\74.gif" />
+    <Content Include="editor\plugins\emoticons\images\75.gif" />
+    <Content Include="editor\plugins\emoticons\images\76.gif" />
+    <Content Include="editor\plugins\emoticons\images\77.gif" />
+    <Content Include="editor\plugins\emoticons\images\78.gif" />
+    <Content Include="editor\plugins\emoticons\images\79.gif" />
+    <Content Include="editor\plugins\emoticons\images\8.gif" />
+    <Content Include="editor\plugins\emoticons\images\80.gif" />
+    <Content Include="editor\plugins\emoticons\images\81.gif" />
+    <Content Include="editor\plugins\emoticons\images\82.gif" />
+    <Content Include="editor\plugins\emoticons\images\83.gif" />
+    <Content Include="editor\plugins\emoticons\images\84.gif" />
+    <Content Include="editor\plugins\emoticons\images\85.gif" />
+    <Content Include="editor\plugins\emoticons\images\86.gif" />
+    <Content Include="editor\plugins\emoticons\images\87.gif" />
+    <Content Include="editor\plugins\emoticons\images\88.gif" />
+    <Content Include="editor\plugins\emoticons\images\89.gif" />
+    <Content Include="editor\plugins\emoticons\images\9.gif" />
+    <Content Include="editor\plugins\emoticons\images\90.gif" />
+    <Content Include="editor\plugins\emoticons\images\91.gif" />
+    <Content Include="editor\plugins\emoticons\images\92.gif" />
+    <Content Include="editor\plugins\emoticons\images\93.gif" />
+    <Content Include="editor\plugins\emoticons\images\94.gif" />
+    <Content Include="editor\plugins\emoticons\images\95.gif" />
+    <Content Include="editor\plugins\emoticons\images\96.gif" />
+    <Content Include="editor\plugins\emoticons\images\97.gif" />
+    <Content Include="editor\plugins\emoticons\images\98.gif" />
+    <Content Include="editor\plugins\emoticons\images\99.gif" />
+    <Content Include="editor\plugins\emoticons\images\static.gif" />
+    <Content Include="editor\plugins\filemanager\filemanager.js" />
+    <Content Include="editor\plugins\filemanager\images\file-16.gif" />
+    <Content Include="editor\plugins\filemanager\images\file-64.gif" />
+    <Content Include="editor\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="editor\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="editor\plugins\filemanager\images\go-up.gif" />
+    <Content Include="editor\plugins\fixtoolbar\fixtoolbar.js" />
+    <Content Include="editor\plugins\flash\flash.js" />
+    <Content Include="editor\plugins\image\image.js" />
+    <Content Include="editor\plugins\image\images\align_left.gif" />
+    <Content Include="editor\plugins\image\images\align_right.gif" />
+    <Content Include="editor\plugins\image\images\align_top.gif" />
+    <Content Include="editor\plugins\image\images\refresh.png" />
+    <Content Include="editor\plugins\insertfile\insertfile.js" />
+    <Content Include="editor\plugins\lineheight\lineheight.js" />
+    <Content Include="editor\plugins\link\link.js" />
+    <Content Include="editor\plugins\map\map.html" />
+    <Content Include="editor\plugins\map\map.js" />
+    <Content Include="editor\plugins\media\media.js" />
+    <Content Include="editor\plugins\multiimage\images\image.png" />
+    <Content Include="editor\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="editor\plugins\multiimage\images\select-files-zh-CN.png" />
+    <Content Include="editor\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="editor\plugins\multiimage\multiimage.js" />
+    <Content Include="editor\plugins\pagebreak\pagebreak.js" />
+    <Content Include="editor\plugins\plainpaste\plainpaste.js" />
+    <Content Include="editor\plugins\preview\preview.js" />
+    <Content Include="editor\plugins\quickformat\quickformat.js" />
+    <Content Include="editor\plugins\table\table.js" />
+    <Content Include="editor\plugins\template\html\1.html" />
+    <Content Include="editor\plugins\template\html\2.html" />
+    <Content Include="editor\plugins\template\html\3.html" />
+    <Content Include="editor\plugins\template\template.js" />
+    <Content Include="editor\plugins\wordpaste\wordpaste.js" />
+    <Content Include="editor\themes\common\anchor.gif" />
+    <Content Include="editor\themes\common\blank.gif" />
+    <Content Include="editor\themes\common\flash.gif" />
+    <Content Include="editor\themes\common\loading.gif" />
+    <Content Include="editor\themes\common\media.gif" />
+    <Content Include="editor\themes\common\rm.gif" />
+    <Content Include="editor\themes\default\background.png" />
+    <Content Include="editor\themes\default\default.css" />
+    <Content Include="editor\themes\default\default.png" />
+    <Content Include="editor\themes\qq\editor.gif" />
+    <Content Include="editor\themes\qq\qq.css" />
+    <Content Include="editor\themes\simple\simple.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GetWebCode.aspx" />
+    <Content Include="GetWebToken.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Highcharts\code\css\highcharts.css" />
+    <Content Include="Highcharts\code\highcharts-3d.js" />
+    <Content Include="Highcharts\code\highcharts-3d.src.js" />
+    <Content Include="Highcharts\code\highcharts-more.js" />
+    <Content Include="Highcharts\code\highcharts-more.src.js" />
+    <Content Include="Highcharts\code\highcharts.js" />
+    <Content Include="Highcharts\code\highcharts.src.js" />
+    <Content Include="Highcharts\code\js\highcharts-3d.js" />
+    <Content Include="Highcharts\code\js\highcharts-3d.src.js" />
+    <Content Include="Highcharts\code\js\highcharts-more.js" />
+    <Content Include="Highcharts\code\js\highcharts-more.src.js" />
+    <Content Include="Highcharts\code\js\highcharts.js" />
+    <Content Include="Highcharts\code\js\highcharts.src.js" />
+    <Content Include="Highcharts\code\js\modules\accessibility.js" />
+    <Content Include="Highcharts\code\js\modules\accessibility.src.js" />
+    <Content Include="Highcharts\code\js\modules\annotations.js" />
+    <Content Include="Highcharts\code\js\modules\annotations.src.js" />
+    <Content Include="Highcharts\code\js\modules\boost-canvas.js" />
+    <Content Include="Highcharts\code\js\modules\boost-canvas.src.js" />
+    <Content Include="Highcharts\code\js\modules\boost.js" />
+    <Content Include="Highcharts\code\js\modules\boost.src.js" />
+    <Content Include="Highcharts\code\js\modules\broken-axis.js" />
+    <Content Include="Highcharts\code\js\modules\broken-axis.src.js" />
+    <Content Include="Highcharts\code\js\modules\data.js" />
+    <Content Include="Highcharts\code\js\modules\data.src.js" />
+    <Content Include="Highcharts\code\js\modules\drilldown.js" />
+    <Content Include="Highcharts\code\js\modules\drilldown.src.js" />
+    <Content Include="Highcharts\code\js\modules\export-data.js" />
+    <Content Include="Highcharts\code\js\modules\export-data.src.js" />
+    <Content Include="Highcharts\code\js\modules\exporting.js" />
+    <Content Include="Highcharts\code\js\modules\exporting.src.js" />
+    <Content Include="Highcharts\code\js\modules\funnel.js" />
+    <Content Include="Highcharts\code\js\modules\funnel.src.js" />
+    <Content Include="Highcharts\code\js\modules\gantt.js" />
+    <Content Include="Highcharts\code\js\modules\gantt.src.js" />
+    <Content Include="Highcharts\code\js\modules\grid-axis.js" />
+    <Content Include="Highcharts\code\js\modules\grid-axis.src.js" />
+    <Content Include="Highcharts\code\js\modules\heatmap.js" />
+    <Content Include="Highcharts\code\js\modules\heatmap.src.js" />
+    <Content Include="Highcharts\code\js\modules\no-data-to-display.js" />
+    <Content Include="Highcharts\code\js\modules\no-data-to-display.src.js" />
+    <Content Include="Highcharts\code\js\modules\offline-exporting.js" />
+    <Content Include="Highcharts\code\js\modules\offline-exporting.src.js" />
+    <Content Include="Highcharts\code\js\modules\overlapping-datalabels.js" />
+    <Content Include="Highcharts\code\js\modules\overlapping-datalabels.src.js" />
+    <Content Include="Highcharts\code\js\modules\series-label.js" />
+    <Content Include="Highcharts\code\js\modules\series-label.src.js" />
+    <Content Include="Highcharts\code\js\modules\solid-gauge.js" />
+    <Content Include="Highcharts\code\js\modules\solid-gauge.src.js" />
+    <Content Include="Highcharts\code\js\modules\static-scale.js" />
+    <Content Include="Highcharts\code\js\modules\static-scale.src.js" />
+    <Content Include="Highcharts\code\js\modules\stock.js" />
+    <Content Include="Highcharts\code\js\modules\stock.src.js" />
+    <Content Include="Highcharts\code\js\modules\treemap.js" />
+    <Content Include="Highcharts\code\js\modules\treemap.src.js" />
+    <Content Include="Highcharts\code\js\modules\xrange-series.js" />
+    <Content Include="Highcharts\code\js\modules\xrange-series.src.js" />
+    <Content Include="Highcharts\code\js\themes\dark-blue.js" />
+    <Content Include="Highcharts\code\js\themes\dark-green.js" />
+    <Content Include="Highcharts\code\js\themes\dark-unica.js" />
+    <Content Include="Highcharts\code\js\themes\gray.js" />
+    <Content Include="Highcharts\code\js\themes\grid-light.js" />
+    <Content Include="Highcharts\code\js\themes\grid.js" />
+    <Content Include="Highcharts\code\js\themes\sand-signika.js" />
+    <Content Include="Highcharts\code\js\themes\skies.js" />
+    <Content Include="Highcharts\code\lib\canvg.js" />
+    <Content Include="Highcharts\code\lib\canvg.src.js" />
+    <Content Include="Highcharts\code\lib\jspdf.js" />
+    <Content Include="Highcharts\code\lib\jspdf.src.js" />
+    <Content Include="Highcharts\code\lib\rgbcolor.js" />
+    <Content Include="Highcharts\code\lib\rgbcolor.src.js" />
+    <Content Include="Highcharts\code\lib\svg2pdf.js" />
+    <Content Include="Highcharts\code\lib\svg2pdf.src.js" />
+    <Content Include="Highcharts\code\modules\accessibility.js" />
+    <Content Include="Highcharts\code\modules\accessibility.src.js" />
+    <Content Include="Highcharts\code\modules\annotations.js" />
+    <Content Include="Highcharts\code\modules\annotations.src.js" />
+    <Content Include="Highcharts\code\modules\boost-canvas.js" />
+    <Content Include="Highcharts\code\modules\boost-canvas.src.js" />
+    <Content Include="Highcharts\code\modules\boost.js" />
+    <Content Include="Highcharts\code\modules\boost.src.js" />
+    <Content Include="Highcharts\code\modules\broken-axis.js" />
+    <Content Include="Highcharts\code\modules\broken-axis.src.js" />
+    <Content Include="Highcharts\code\modules\data.js" />
+    <Content Include="Highcharts\code\modules\data.src.js" />
+    <Content Include="Highcharts\code\modules\drilldown.js" />
+    <Content Include="Highcharts\code\modules\drilldown.src.js" />
+    <Content Include="Highcharts\code\modules\export-data.js" />
+    <Content Include="Highcharts\code\modules\export-data.src.js" />
+    <Content Include="Highcharts\code\modules\exporting.js" />
+    <Content Include="Highcharts\code\modules\exporting.src.js" />
+    <Content Include="Highcharts\code\modules\funnel.js" />
+    <Content Include="Highcharts\code\modules\funnel.src.js" />
+    <Content Include="Highcharts\code\modules\gantt.js" />
+    <Content Include="Highcharts\code\modules\gantt.src.js" />
+    <Content Include="Highcharts\code\modules\grid-axis.js" />
+    <Content Include="Highcharts\code\modules\grid-axis.src.js" />
+    <Content Include="Highcharts\code\modules\heatmap.js" />
+    <Content Include="Highcharts\code\modules\heatmap.src.js" />
+    <Content Include="Highcharts\code\modules\no-data-to-display.js" />
+    <Content Include="Highcharts\code\modules\no-data-to-display.src.js" />
+    <Content Include="Highcharts\code\modules\offline-exporting.js" />
+    <Content Include="Highcharts\code\modules\offline-exporting.src.js" />
+    <Content Include="Highcharts\code\modules\overlapping-datalabels.js" />
+    <Content Include="Highcharts\code\modules\overlapping-datalabels.src.js" />
+    <Content Include="Highcharts\code\modules\series-label.js" />
+    <Content Include="Highcharts\code\modules\series-label.src.js" />
+    <Content Include="Highcharts\code\modules\solid-gauge.js" />
+    <Content Include="Highcharts\code\modules\solid-gauge.src.js" />
+    <Content Include="Highcharts\code\modules\static-scale.js" />
+    <Content Include="Highcharts\code\modules\static-scale.src.js" />
+    <Content Include="Highcharts\code\modules\stock.js" />
+    <Content Include="Highcharts\code\modules\stock.src.js" />
+    <Content Include="Highcharts\code\modules\treemap.js" />
+    <Content Include="Highcharts\code\modules\treemap.src.js" />
+    <Content Include="Highcharts\code\modules\xrange-series.js" />
+    <Content Include="Highcharts\code\modules\xrange-series.src.js" />
+    <Content Include="Highcharts\code\themes\dark-blue.js" />
+    <Content Include="Highcharts\code\themes\dark-green.js" />
+    <Content Include="Highcharts\code\themes\dark-unica.js" />
+    <Content Include="Highcharts\code\themes\gray.js" />
+    <Content Include="Highcharts\code\themes\grid-light.js" />
+    <Content Include="Highcharts\code\themes\grid.js" />
+    <Content Include="Highcharts\code\themes\sand-signika.js" />
+    <Content Include="Highcharts\code\themes\skies.js" />
+    <Content Include="images\baidu\marker_gray.png" />
+    <Content Include="images\baidu\marker_gray_sel.png" />
+    <Content Include="images\baidu\marker_red.png" />
+    <Content Include="images\baidu\marker_red_sel.png" />
+    <Content Include="images\baidu\marker_yellow.png" />
+    <Content Include="images\oauth\feixin.png" />
+    <Content Include="images\oauth\kaixin.png" />
+    <Content Include="images\oauth\qq.png" />
+    <Content Include="images\oauth\renren.png" />
+    <Content Include="images\oauth\taobao.png" />
+    <Content Include="images\oauth\weibo.png" />
+    <None Include="Views\Account\Index.cshtml" />
+    <Content Include="m\index.html" />
+    <Content Include="scripts\artdialog\dialog-min.js" />
+    <Content Include="scripts\artdialog\dialog-plus-min.js" />
+    <Content Include="scripts\artdialog\ui-dialog.css" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\ckplayer\ckplayer.js" />
+    <Content Include="scripts\ckplayer\ckplayer.swf" />
+    <Content Include="scripts\ckplayer\ckplayer.xml" />
+    <Content Include="scripts\ckplayer\language.xml" />
+    <Content Include="scripts\ckplayer\related.xml" />
+    <Content Include="scripts\ckplayer\share.xml" />
+    <Content Include="scripts\ckplayer\share\feixin.png" />
+    <Content Include="scripts\ckplayer\share\google.png" />
+    <Content Include="scripts\ckplayer\share\kaixin001.png" />
+    <Content Include="scripts\ckplayer\share\msn.png" />
+    <Content Include="scripts\ckplayer\share\qq.png" />
+    <Content Include="scripts\ckplayer\share\qq2.png" />
+    <Content Include="scripts\ckplayer\share\qzone.png" />
+    <Content Include="scripts\ckplayer\share\rr.png" />
+    <Content Include="scripts\ckplayer\share\sina.png" />
+    <Content Include="scripts\ckplayer\share\sohu.png" />
+    <Content Include="scripts\ckplayer\share\tianya.png" />
+    <Content Include="scripts\ckplayer\style.swf" />
+    <Content Include="scripts\crop.js" />
+    <Content Include="scripts\datepicker\calendar.js" />
+    <Content Include="scripts\datepicker\lang\en.js" />
+    <Content Include="scripts\datepicker\lang\zh-cn.js" />
+    <Content Include="scripts\datepicker\lang\zh-tw.js" />
+    <Content Include="scripts\datepicker\skin\datePicker.gif" />
+    <Content Include="scripts\datepicker\skin\default\datepicker.css" />
+    <Content Include="scripts\datepicker\skin\default\img.gif" />
+    <Content Include="scripts\datepicker\skin\WdatePicker.css" />
+    <Content Include="scripts\datepicker\skin\whyGreen\bg.jpg" />
+    <Content Include="scripts\datepicker\skin\whyGreen\datepicker.css" />
+    <Content Include="scripts\datepicker\skin\whyGreen\img.gif" />
+    <Content Include="scripts\datepicker\WdatePicker.js" />
+    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\jquery\jquery-1.11.2.min.js" />
+    <Content Include="scripts\jquery\jquery.fineuploader-3.1.min.js" />
+    <Content Include="scripts\jquery\jquery.form.min.js" />
+    <Content Include="scripts\jquery\jquery.jcrop.min.js" />
+    <Content Include="scripts\jquery\jquery.jqzoom.js" />
+    <Content Include="scripts\jquery\jquery.lazyload.min.js" />
+    <Content Include="scripts\jquery\jquery.nicescroll.js" />
+    <Content Include="scripts\jquery\jquery.pagination.js" />
+    <Content Include="scripts\jquery\PCASClass.js" />
+    <Content Include="scripts\jquery\Validform_v5.3.2_min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\webuploader\uploader.swf" />
+    <Content Include="scripts\webuploader\webuploader.min.js" />
+    <Content Include="Skin\css\font-awesome.min.css" />
+    <Content Include="Skin\css\font.css" />
+    <Content Include="Skin\css\login.css" />
+    <Content Include="Skin\css\main.css" />
+    <Content Include="Skin\css\simple-line-icons.css" />
+    <Content Include="Skin\css\style.css" />
+    <Content Include="Skin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Skin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Skin\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Skin\img\img_01.jpg" />
+    <Content Include="Skin\img\img_01.png" />
+    <Content Include="Skin\img\img_02.jpg" />
+    <Content Include="Skin\img\img_02.png" />
+    <Content Include="Skin\img\img_03.png" />
+    <Content Include="Skin\img\logo.png" />
+    <Content Include="Skin\img\logo1 .png" />
+    <Content Include="Skin\img\skin_icons.png" />
+    <Content Include="Skin\img\sort01.png" />
+    <Content Include="Skin\img\sort02.png" />
+    <Content Include="Skin\img\sort03.png" />
+    <Content Include="Skin\js\common.js" />
+    <Content Include="Skin\js\demoUtils.js" />
+    <Content Include="Skin\js\iscroll.js" />
+    <Content Include="Skin\js\jquery-1.11.2.min.js" />
+    <Content Include="Skin\js\jquery-2.1.1.min.js" />
+    <Content Include="Skin\js\laymain.js" />
+    <Content Include="Skin\js\menu.js" />
+    <Content Include="Skin\layer\layer.js" />
+    <Content Include="Skin\layer\mobile\layer.js" />
+    <Content Include="Skin\layer\mobile\need\layer.css" />
+    <Content Include="Skin\layer\skin\default\icon-ext.png" />
+    <Content Include="Skin\layer\skin\default\icon.png" />
+    <Content Include="Skin\layer\skin\default\layer.css" />
+    <Content Include="Skin\layer\skin\default\loading-0.gif" />
+    <Content Include="Skin\layer\skin\default\loading-1.gif" />
+    <Content Include="Skin\layer\skin\default\loading-2.gif" />
+    <Content Include="Skin\layui\css\layui.css" />
+    <Content Include="Skin\layui\css\layui.mobile.css" />
+    <Content Include="Skin\layui\css\modules\code.css" />
+    <Content Include="Skin\layui\css\modules\laydate\icon.png" />
+    <Content Include="Skin\layui\css\modules\laydate\laydate.css" />
+    <Content Include="Skin\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="Skin\layui\css\modules\layer\default\icon.png" />
+    <Content Include="Skin\layui\css\modules\layer\default\layer.css" />
+    <Content Include="Skin\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="Skin\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="Skin\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="Skin\layui\font\iconfont.svg" />
+    <Content Include="Skin\layui\images\face\0.gif" />
+    <Content Include="Skin\layui\images\face\1.gif" />
+    <Content Include="Skin\layui\images\face\10.gif" />
+    <Content Include="Skin\layui\images\face\11.gif" />
+    <Content Include="Skin\layui\images\face\12.gif" />
+    <Content Include="Skin\layui\images\face\13.gif" />
+    <Content Include="Skin\layui\images\face\14.gif" />
+    <Content Include="Skin\layui\images\face\15.gif" />
+    <Content Include="Skin\layui\images\face\16.gif" />
+    <Content Include="Skin\layui\images\face\17.gif" />
+    <Content Include="Skin\layui\images\face\18.gif" />
+    <Content Include="Skin\layui\images\face\19.gif" />
+    <Content Include="Skin\layui\images\face\2.gif" />
+    <Content Include="Skin\layui\images\face\20.gif" />
+    <Content Include="Skin\layui\images\face\21.gif" />
+    <Content Include="Skin\layui\images\face\22.gif" />
+    <Content Include="Skin\layui\images\face\23.gif" />
+    <Content Include="Skin\layui\images\face\24.gif" />
+    <Content Include="Skin\layui\images\face\25.gif" />
+    <Content Include="Skin\layui\images\face\26.gif" />
+    <Content Include="Skin\layui\images\face\27.gif" />
+    <Content Include="Skin\layui\images\face\28.gif" />
+    <Content Include="Skin\layui\images\face\29.gif" />
+    <Content Include="Skin\layui\images\face\3.gif" />
+    <Content Include="Skin\layui\images\face\30.gif" />
+    <Content Include="Skin\layui\images\face\31.gif" />
+    <Content Include="Skin\layui\images\face\32.gif" />
+    <Content Include="Skin\layui\images\face\33.gif" />
+    <Content Include="Skin\layui\images\face\34.gif" />
+    <Content Include="Skin\layui\images\face\35.gif" />
+    <Content Include="Skin\layui\images\face\36.gif" />
+    <Content Include="Skin\layui\images\face\37.gif" />
+    <Content Include="Skin\layui\images\face\38.gif" />
+    <Content Include="Skin\layui\images\face\39.gif" />
+    <Content Include="Skin\layui\images\face\4.gif" />
+    <Content Include="Skin\layui\images\face\40.gif" />
+    <Content Include="Skin\layui\images\face\41.gif" />
+    <Content Include="Skin\layui\images\face\42.gif" />
+    <Content Include="Skin\layui\images\face\43.gif" />
+    <Content Include="Skin\layui\images\face\44.gif" />
+    <Content Include="Skin\layui\images\face\45.gif" />
+    <Content Include="Skin\layui\images\face\46.gif" />
+    <Content Include="Skin\layui\images\face\47.gif" />
+    <Content Include="Skin\layui\images\face\48.gif" />
+    <Content Include="Skin\layui\images\face\49.gif" />
+    <Content Include="Skin\layui\images\face\5.gif" />
+    <Content Include="Skin\layui\images\face\50.gif" />
+    <Content Include="Skin\layui\images\face\51.gif" />
+    <Content Include="Skin\layui\images\face\52.gif" />
+    <Content Include="Skin\layui\images\face\53.gif" />
+    <Content Include="Skin\layui\images\face\54.gif" />
+    <Content Include="Skin\layui\images\face\55.gif" />
+    <Content Include="Skin\layui\images\face\56.gif" />
+    <Content Include="Skin\layui\images\face\57.gif" />
+    <Content Include="Skin\layui\images\face\58.gif" />
+    <Content Include="Skin\layui\images\face\59.gif" />
+    <Content Include="Skin\layui\images\face\6.gif" />
+    <Content Include="Skin\layui\images\face\60.gif" />
+    <Content Include="Skin\layui\images\face\61.gif" />
+    <Content Include="Skin\layui\images\face\62.gif" />
+    <Content Include="Skin\layui\images\face\63.gif" />
+    <Content Include="Skin\layui\images\face\64.gif" />
+    <Content Include="Skin\layui\images\face\65.gif" />
+    <Content Include="Skin\layui\images\face\66.gif" />
+    <Content Include="Skin\layui\images\face\67.gif" />
+    <Content Include="Skin\layui\images\face\68.gif" />
+    <Content Include="Skin\layui\images\face\69.gif" />
+    <Content Include="Skin\layui\images\face\7.gif" />
+    <Content Include="Skin\layui\images\face\70.gif" />
+    <Content Include="Skin\layui\images\face\71.gif" />
+    <Content Include="Skin\layui\images\face\8.gif" />
+    <Content Include="Skin\layui\images\face\9.gif" />
+    <Content Include="Skin\layui\layui.js" />
+    <Content Include="Skin\layui\lay\dest\layui.all.js" />
+    <Content Include="Skin\layui\lay\modules\code.js" />
+    <Content Include="Skin\layui\lay\modules\element.js" />
+    <Content Include="Skin\layui\lay\modules\flow.js" />
+    <Content Include="Skin\layui\lay\modules\form.js" />
+    <Content Include="Skin\layui\lay\modules\jquery.js" />
+    <Content Include="Skin\layui\lay\modules\laydate.js" />
+    <Content Include="Skin\layui\lay\modules\layedit.js" />
+    <Content Include="Skin\layui\lay\modules\layer.js" />
+    <Content Include="Skin\layui\lay\modules\laypage.js" />
+    <Content Include="Skin\layui\lay\modules\laytpl.js" />
+    <Content Include="Skin\layui\lay\modules\mobile.js" />
+    <Content Include="Skin\layui\lay\modules\tree.js" />
+    <Content Include="Skin\layui\lay\modules\upload.js" />
+    <Content Include="Skin\layui\lay\modules\util.js" />
+    <Content Include="test_page.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Account\Avatar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="admin\center.aspx.cs">
+      <DependentUpon>center.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\center.aspx.designer.cs">
+      <DependentUpon>center.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\deviceloginfo.aspx.cs">
+      <DependentUpon>deviceloginfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\deviceloginfo.aspx.designer.cs">
+      <DependentUpon>deviceloginfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\electricity_add.aspx.cs">
+      <DependentUpon>electricity_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\electricity_add.aspx.designer.cs">
+      <DependentUpon>electricity_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\deviceInspection.aspx.cs">
+      <DependentUpon>deviceInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\deviceInspection.aspx.designer.cs">
+      <DependentUpon>deviceInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\electricity_list.aspx.cs">
+      <DependentUpon>electricity_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\electricity_list.aspx.designer.cs">
+      <DependentUpon>electricity_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\history_list.aspx.cs">
+      <DependentUpon>history_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\history_list.aspx.designer.cs">
+      <DependentUpon>history_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\map_show.aspx.cs">
+      <DependentUpon>map_show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\map_show.aspx.designer.cs">
+      <DependentUpon>map_show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\msg_list.aspx.cs">
+      <DependentUpon>msg_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\msg_list.aspx.designer.cs">
+      <DependentUpon>msg_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\electricity\warning_list.aspx.cs">
+      <DependentUpon>warning_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\electricity\warning_list.aspx.designer.cs">
+      <DependentUpon>warning_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manager\manager_edit.aspx.cs">
+      <DependentUpon>manager_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manager\manager_edit.aspx.designer.cs">
+      <DependentUpon>manager_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manager\manager_list.aspx.cs">
+      <DependentUpon>manager_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manager\manager_list.aspx.designer.cs">
+      <DependentUpon>manager_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manager\manager_log.aspx.cs">
+      <DependentUpon>manager_log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manager\manager_log.aspx.designer.cs">
+      <DependentUpon>manager_log.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manager\manager_pwd.aspx.cs">
+      <DependentUpon>manager_pwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manager\manager_pwd.aspx.designer.cs">
+      <DependentUpon>manager_pwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manager\role_edit.aspx.cs">
+      <DependentUpon>role_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manager\role_edit.aspx.designer.cs">
+      <DependentUpon>role_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manager\role_list.aspx.cs">
+      <DependentUpon>role_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manager\role_list.aspx.designer.cs">
+      <DependentUpon>role_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\settings\nav_edit.aspx.cs">
+      <DependentUpon>nav_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\settings\nav_edit.aspx.designer.cs">
+      <DependentUpon>nav_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\settings\nav_list.aspx.cs">
+      <DependentUpon>nav_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\settings\nav_list.aspx.designer.cs">
+      <DependentUpon>nav_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\MicroMsg\MicroMsgAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiBaseController.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\PictureController.cs" />
+    <Compile Include="Controllers\PictureViewerController.cs" />
+    <Compile Include="Controllers\UserManagerController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\VCodeController.cs" />
+    <Compile Include="GetWebCode.aspx.cs">
+      <DependentUpon>GetWebCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetWebCode.aspx.designer.cs">
+      <DependentUpon>GetWebCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetWebToken.aspx.cs">
+      <DependentUpon>GetWebToken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetWebToken.aspx.designer.cs">
+      <DependentUpon>GetWebToken.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageHandler.cs" />
+    <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\ManagePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\UserSession.cs" />
+    <Compile Include="Controllers\VerifyAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestController.cs" />
+    <Compile Include="test_page.aspx.cs">
+      <DependentUpon>test_page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test_page.aspx.designer.cs">
+      <DependentUpon>test_page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tools\admin_ajax.ashx.cs">
+      <DependentUpon>admin_ajax.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tools\upload_ajax.ashx.cs">
+      <DependentUpon>upload_ajax.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="tools\verify_code.ashx.cs">
+      <DependentUpon>verify_code.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="weixinhome.aspx.cs">
+      <DependentUpon>weixinhome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="weixinhome.aspx.designer.cs">
+      <DependentUpon>weixinhome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="weixin\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="weixin\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="weixin\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="weixin\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="weixin\wxhandler.ashx.cs">
+      <DependentUpon>wxhandler.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTcms.BLL\DTcms.BLL.csproj">
+      <Project>{0484F2ED-8EF3-4C40-8B3A-FE52B5E71AC2}</Project>
+      <Name>DTcms.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTcms.Common\DTcms.Common.csproj">
+      <Project>{6468CBF1-9D41-4231-8814-14491922FECC}</Project>
+      <Name>DTcms.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTcms.Model\DTcms.Model.csproj">
+      <Project>{D67868C9-56B9-4E35-8E15-C105FC44CFB9}</Project>
+      <Name>DTcms.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTcms.Web.UI\DTcms.Web.UI.csproj">
+      <Project>{58376273-DA57-4220-8935-6AF4D998C0F4}</Project>
+      <Name>DTcms.Web.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WxPayAPI\WxPayAPI\WxPayAPI.csproj">
+      <Project>{25911370-f06a-4956-8ee3-659a7ba14961}</Project>
+      <Name>WxPayAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="weixinhome.aspx" />
+    <Content Include="weixin\index.aspx" />
+    <Content Include="weixin\index.html" />
+    <Content Include="weixin\login.aspx" />
+    <Content Include="xmlconfig\site.config" />
+    <Content Include="xmlconfig\urls.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="admin\NewFolder1\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\MicroMsg\Controllers\" />
+    <Folder Include="Areas\MicroMsg\Models\" />
+    <Folder Include="Areas\MicroMsg\Views\Shared\" />
+    <Folder Include="upload\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tools\admin_ajax.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tools\upload_ajax.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xmlconfig\user.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xmlconfig\order.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tools\verify_code.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xmlconfig\tenpaypc.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xmlconfig\alipaypc.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Skin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Skin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Skin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Skin\fonts\FontAwesome.otf" />
+    <Content Include="Skin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Skin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Skin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Skin\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Skin\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Skin\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Skin\fonts\sourcesanspro\sourcesanspro-bold.woff" />
+    <Content Include="Skin\fonts\sourcesanspro\sourcesanspro-light.woff" />
+    <Content Include="Skin\fonts\sourcesanspro\sourcesanspro.woff" />
+    <Content Include="Skin\layui\font\iconfont.eot" />
+    <Content Include="Skin\layui\font\iconfont.ttf" />
+    <Content Include="Skin\layui\font\iconfont.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Highcharts\code\highcharts-3d.js.map" />
+    <Content Include="Highcharts\code\highcharts-more.js.map" />
+    <Content Include="Highcharts\code\highcharts.js.map" />
+    <Content Include="Highcharts\code\highmaps.js.map" />
+    <Content Include="Highcharts\code\highstock.js.map" />
+    <Content Include="Highcharts\code\js\highcharts-3d.js.map" />
+    <Content Include="Highcharts\code\js\highcharts-more.js.map" />
+    <Content Include="Highcharts\code\js\highcharts.js.map" />
+    <Content Include="Highcharts\code\js\highmaps.js.map" />
+    <Content Include="Highcharts\code\js\highstock.js.map" />
+    <Content Include="Highcharts\code\js\modules\accessibility.js.map" />
+    <Content Include="Highcharts\code\js\modules\annotations.js.map" />
+    <Content Include="Highcharts\code\js\modules\boost-canvas.js.map" />
+    <Content Include="Highcharts\code\js\modules\boost.js.map" />
+    <Content Include="Highcharts\code\js\modules\broken-axis.js.map" />
+    <Content Include="Highcharts\code\js\modules\canvasrenderer.experimental.js.map" />
+    <Content Include="Highcharts\code\js\modules\data.js.map" />
+    <Content Include="Highcharts\code\js\modules\drilldown.js.map" />
+    <Content Include="Highcharts\code\js\modules\export-data.js.map" />
+    <Content Include="Highcharts\code\js\modules\exporting.js.map" />
+    <Content Include="Highcharts\code\js\modules\funnel.js.map" />
+    <Content Include="Highcharts\code\js\modules\gantt.js.map" />
+    <Content Include="Highcharts\code\js\modules\grid-axis.js.map" />
+    <Content Include="Highcharts\code\js\modules\heatmap.js.map" />
+    <Content Include="Highcharts\code\js\modules\map-parser.js.map" />
+    <Content Include="Highcharts\code\js\modules\map.js.map" />
+    <Content Include="Highcharts\code\js\modules\no-data-to-display.js.map" />
+    <Content Include="Highcharts\code\js\modules\offline-exporting.js.map" />
+    <Content Include="Highcharts\code\js\modules\overlapping-datalabels.js.map" />
+    <Content Include="Highcharts\code\js\modules\series-label.js.map" />
+    <Content Include="Highcharts\code\js\modules\solid-gauge.js.map" />
+    <Content Include="Highcharts\code\js\modules\static-scale.js.map" />
+    <Content Include="Highcharts\code\js\modules\stock.js.map" />
+    <Content Include="Highcharts\code\js\modules\treemap.js.map" />
+    <Content Include="Highcharts\code\js\modules\xrange-series.js.map" />
+    <Content Include="Highcharts\code\modules\accessibility.js.map" />
+    <Content Include="Highcharts\code\modules\annotations.js.map" />
+    <Content Include="Highcharts\code\modules\boost-canvas.js.map" />
+    <Content Include="Highcharts\code\modules\boost.js.map" />
+    <Content Include="Highcharts\code\modules\broken-axis.js.map" />
+    <Content Include="Highcharts\code\modules\canvasrenderer.experimental.js.map" />
+    <Content Include="Highcharts\code\modules\data.js.map" />
+    <Content Include="Highcharts\code\modules\drilldown.js.map" />
+    <Content Include="Highcharts\code\modules\export-data.js.map" />
+    <Content Include="Highcharts\code\modules\exporting.js.map" />
+    <Content Include="Highcharts\code\modules\funnel.js.map" />
+    <Content Include="Highcharts\code\modules\gantt.js.map" />
+    <Content Include="Highcharts\code\modules\grid-axis.js.map" />
+    <Content Include="Highcharts\code\modules\heatmap.js.map" />
+    <Content Include="Highcharts\code\modules\map-parser.js.map" />
+    <Content Include="Highcharts\code\modules\map.js.map" />
+    <Content Include="Highcharts\code\modules\no-data-to-display.js.map" />
+    <Content Include="Highcharts\code\modules\offline-exporting.js.map" />
+    <Content Include="Highcharts\code\modules\overlapping-datalabels.js.map" />
+    <Content Include="Highcharts\code\modules\series-label.js.map" />
+    <Content Include="Highcharts\code\modules\solid-gauge.js.map" />
+    <Content Include="Highcharts\code\modules\static-scale.js.map" />
+    <Content Include="Highcharts\code\modules\stock.js.map" />
+    <Content Include="Highcharts\code\modules\treemap.js.map" />
+    <Content Include="Highcharts\code\modules\xrange-series.js.map" />
+    <Content Include="Config\log4net.config" />
+    <Content Include="packages.config" />
+    <Content Include="Areas\MicroMsg\Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\光速物联智慧用电.pubxml" />
+    <None Include="Properties\PublishProfiles\智慧用电.pubxml" />
+    <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
+    <Content Include="weixin\wxhandler.ashx" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>35708</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:35709/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetWebCode.aspx.cs" Inherits="DTcms.Web.GetWebCode" %>

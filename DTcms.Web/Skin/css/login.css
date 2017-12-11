@@ -1,0 +1,233 @@
+﻿@charset "utf-8";
+/* CSS Document */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft YaHei";
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    text-decoration: none;
+}
+
+html {
+    line-height: 1;
+}
+
+q, blockquote {
+    quotes: none;
+}
+
+    q:before, q:after, blockquote:before, blockquote:after {
+        content: "";
+        content: none;
+    }
+
+a img {
+    border: none;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.ime-disabled {
+    ime-mode: disabled;
+}
+
+.clear {
+    clear: both;
+    font-size: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
+.line5 {
+    clear: both;
+    font-size: 0px;
+    height: 5px;
+    overflow: hidden;
+}
+
+.line10 {
+    clear: both;
+    font-size: 0px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.line15 {
+    clear: both;
+    font-size: 0px;
+    height: 15px;
+    overflow: hidden;
+}
+
+.line20 {
+    clear: both;
+    font-size: 0px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.line30 {
+    clear: both;
+    font-size: 0px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.loginbody {
+    background: #267cb7;
+    text-align: center;
+}
+
+.login-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px auto auto -140px;
+    width: 280px;
+    text-align: center;
+}
+
+.login-logo {
+    margin: 0 auto 10px;
+    text-indent: -9999em;
+    width: 160px;
+    height: 42px;
+    background: url(../img/logo.png) no-repeat;
+}
+
+.login-form .col {
+    position: relative;
+    padding: 10px 0;
+}
+
+    .login-form .col .icon {
+        position: absolute;
+        display: block;
+        top: 24px;
+        left: 10px;
+        width: 14px;
+        height: 14px;
+        background: url(../img/skin_icons.png) no-repeat;
+        cursor: pointer;
+    }
+
+        .login-form .col .icon.user {
+            background-position: 0 -140px;
+        }
+
+        .login-form .col .icon.pwd {
+            background-position: -28px -140px;
+        }
+
+    .login-form .col .login-input {
+        display: block;
+        padding: 5px 10px 5px 34px;
+        background: #fff;
+        border: 0;
+        border-radius: 3px;
+        font-size: 14px;
+        line-height: 32px;
+        *line-height: 30px;
+        height: 32px;
+        width: 236px;
+        color: #333;
+    }
+
+    .login-form .col .login-btn {
+        display: block;
+        padding: 5px 0;
+        font-size: 14px;
+        color: #fff;
+        width: 100%;
+        line-height: 28px;
+        height: 42px;
+        background: #0C4B77;
+        border: 0;
+        border-radius: 3px;
+        letter-spacing: .5em;
+        cursor: pointer;
+    }
+
+.login-tips {
+    display: block;
+    margin: 10px auto 0;
+    height: 14px;
+    vertical-align: middle;
+}
+
+    .login-tips i {
+        display: inline-block;
+        margin-right: 5px;
+        width: 14px;
+        height: 14px;
+        background: url(../img/skin_icons.png) -56px -140px no-repeat;
+        text-indent: -9999px;
+        vertical-align: middle;
+        zoom: 1;
+        *display: inline;
+        *text-indent: 0;
+    }
+
+    .login-tips p {
+        display: inline-block;
+        height: 14px;
+        line-height: 14px;
+        font-size: 12px;
+        font-weight: normal;
+        color: #83b7ce;
+        vertical-align: middle;
+        zoom: 1;
+        *display: inline;
+    }
+
+.copy-right {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    text-align: center;
+}
+
+    .copy-right p {
+        font-size: 12px;
+        color: #83b7ce;
+        line-height: 1.8em;
+    }

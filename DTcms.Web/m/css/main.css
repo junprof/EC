@@ -1,0 +1,22 @@
+﻿html,body{padding:0;width: 100%; height: 100%;}
+body{_overflow-y:auto; font-family:"微软雅黑";  font-size:.85rem; min-width: 320px; min-height: 100px;  padding: 15px;}
+body{-webkit-font-feature-settings: 'kern' 1; -moz-font-feature-settings: 'kern' 1; -o-font-feature-settings: 'kern' 1; text-rendering: geometricPrecision; }
+a:hover{ text-decoration:none;}
+i{ font-family:Bookman Old Style;}
+.clear:after, .layer_first:after{clear:both; content:'.'; display:block; height:0; font-size:0; visibility:hidden;}
+.clear, .layer_first{zoom:1; clear:both;}
+.hide{display:none;}
+.area_zero, .demotab li i{position:absolute; width:0; height:0; border-style:dashed; border-color:transparent; overflow:hidden;}
+.box{ width:1000px; position:relative; margin:0 auto;}
+pre code{font-family:'\5FAE\8F6F\96C5\9ED1';}
+.inline, .extimgs img{display:inline-block; *display:inline; *zoom:1; vertical-align:top;}
+.btns{display:inline-block; vertical-align:top; margin:0 5px 10px 0; height:36px; line-height:36px; border-radius:3px; padding:0 30px; background-color:#FF4351; color:#fff; border:none;}
+.btns:hover{background-color:#FEAE1B; color:#fff;}
+*{ padding: 0; margin: 0; box-sizing: border-box;}
+.iconfont{font-weight:400;}
+ul{ list-style:none;}
+a{text-decoration:none; color: #333;}
+input { font-family:"微软雅黑";}
+
+.clearfix{ clear:both; zoom:1;}
+.clearfix:after{content:'\20'; clear:both; zoom:1; display:block; height:0;}

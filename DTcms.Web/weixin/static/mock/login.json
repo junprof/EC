@@ -1,0 +1,17 @@
+{
+    "error": 0,
+    "data": {
+        "id": 1,
+        "role_id": 1,
+        "role_type": 1,
+        "user_name": "admin",
+        "password": "385A453F2B70D515",
+        "salt": "24V0XZ",
+        "real_name": "chen",
+        "telephone": "15057716851",
+        "email": "",
+        "is_lock": 0,
+        "add_time": "\/Date(1426225299000)\/",
+        "weichatid": null
+    }
+}

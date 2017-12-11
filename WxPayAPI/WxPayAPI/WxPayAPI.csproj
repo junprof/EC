@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25911370-F06A-4956-8EE3-659A7BA14961}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WxPayAPI</RootNamespace>
+    <AssemblyName>WxPayAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LitJson">
+      <HintPath>DLL\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>DLL\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="business\DownloadBill.cs" />
+    <Compile Include="business\JsApiPay.cs" />
+    <Compile Include="business\MicroPay.cs" />
+    <Compile Include="business\NativeNotify.cs" />
+    <Compile Include="business\NativePay.cs" />
+    <Compile Include="business\OrderQuery.cs" />
+    <Compile Include="business\Refund.cs" />
+    <Compile Include="business\RefundQuery.cs" />
+    <Compile Include="business\ResultNotify.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="example\DownloadBillPage.aspx.cs">
+      <DependentUpon>DownloadBillpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\DownloadBillPage.aspx.designer.cs">
+      <DependentUpon>DownloadBillPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\JsApiPayPage.aspx.cs">
+      <DependentUpon>JsApiPayPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\JsApiPayPage.aspx.designer.cs">
+      <DependentUpon>JsApiPayPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\MakeQRCode.aspx.cs">
+      <DependentUpon>MakeQRCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\MakeQRCode.aspx.designer.cs">
+      <DependentUpon>MakeQRCode.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\MicroPayPage.aspx.cs">
+      <DependentUpon>MicroPayPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\MicroPayPage.aspx.designer.cs">
+      <DependentUpon>MicroPayPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\NativeNotifyPage.aspx.cs">
+      <DependentUpon>NativeNotifyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\NativeNotifyPage.aspx.designer.cs">
+      <DependentUpon>NativeNotifyPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\NativePayPage.aspx.cs">
+      <DependentUpon>NativePayPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\NativePayPage.aspx.designer.cs">
+      <DependentUpon>NativePayPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\OrderQueryPage.aspx.cs">
+      <DependentUpon>OrderQueryPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\OrderQueryPage.aspx.designer.cs">
+      <DependentUpon>OrderQueryPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\ProductPage.aspx.cs">
+      <DependentUpon>ProductPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\ProductPage.aspx.designer.cs">
+      <DependentUpon>ProductPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\RefundPage.aspx.cs">
+      <DependentUpon>RefundPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\RefundPage.aspx.designer.cs">
+      <DependentUpon>RefundPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\RefundQueryPage.aspx.cs">
+      <DependentUpon>RefundQueryPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\RefundQueryPage.aspx.designer.cs">
+      <DependentUpon>RefundQueryPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="example\ResultNotifyPage.aspx.cs">
+      <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="example\ResultNotifyPage.aspx.designer.cs">
+      <DependentUpon>ResultNotifyPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lib\Config.cs" />
+    <Compile Include="lib\Data.cs" />
+    <Compile Include="lib\Exception.cs" />
+    <Compile Include="lib\HttpService.cs" />
+    <Compile Include="lib\Log.cs" />
+    <Compile Include="lib\Notify.cs" />
+    <Compile Include="lib\WxPayApi.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="example\DownloadBillpage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\JsApiPayPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\MakeQRCode.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\MicroPayPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\NativeNotifyPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\NativePayPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\OrderQueryPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\ProductPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\RefundPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\RefundQueryPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="example\ResultNotifyPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cert\apiclient_cert.p12" />
+    <None Include="cert\apiclient_cert.pem" />
+    <None Include="cert\apiclient_key.pem" />
+    <None Include="cert\cert.zip" />
+    <None Include="cert\rootca.pem" />
+    <None Include="logs\2015-04-21.log" />
+    <None Include="logs\2015-04-22.log" />
+    <None Include="logs\2015-04-26.log" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
