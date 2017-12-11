@@ -52,9 +52,9 @@
                 <div class="box-wrap">
                     <a class="menu-btn"></a>
                     <div class="l-list">
-                        <ul class="icon-list">
+                        <%--<ul class="icon-list">
                             <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
-                        </ul>
+                        </ul>--%>
                         <div class="rule-single-select" style="float: left;">
                             <asp:DropDownList ID="ddlOnLine" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlOnLine_SelectedIndexChanged">
                                 <asp:ListItem Value="" Text="在线状态"></asp:ListItem>
@@ -76,19 +76,19 @@
         <div class="table-container" style="padding-top: 10px;">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
                 <tr>
-                    <th width="80" align="center">选择</th>
+                    <%--<th width="80" align="center">选择</th>--%>
                     <th align="left" width="60">在线状态</th>
                     <th align="left" width="60">A相电流</th>
                     <th align="left" width="60">B相电流</th>
                     <th align="left" width="60">C相电流</th>
+                    <th align="left" width="60">A相电压</th>
+                    <th align="left" width="60">B相电压</th>
+                    <th align="left" width="60">C相电压</th>
                     <th align="left" width="60">漏电流</th>
                     <th align="left" width="60">1路温度</th>
                     <th align="left" width="60">2路温度</th>
                     <th align="left" width="60">3路温度</th>
                     <th align="left" width="60">4路温度</th>
-                    <th align="left" width="60">1路电压</th>
-                    <th align="left" width="60">2路电压</th>
-                    <th align="left" width="60">3路电压</th>
                     <th align="left" width="120">新增时间</th>
                     <th align="left" width="120">更新时间</th>
                 </tr>
@@ -115,22 +115,22 @@
 
                 %>
                 <tr>
-                    <td align="center">
+                    <%--<td align="center">
                         <label class="checkall">
                             <input type="checkbox" name="chkId" value="<%=item.id %>" /></label>
-                    </td>
-                    <td><%=item.online?"在线":"离线"%></td>
+                    </td>--%>
+                    <td align="center"><%=item.online?"在线":"离线"%></td>
                     <td><%=getVal(item.AI,model.AI,warningmodel.AI) %>A</td>
                     <td><%=getVal(item.BI,model.BI,warningmodel.BI) %>A</td>
                     <td><%=getVal(item.CI,model.CI,warningmodel.CI) %>A</td>
+                    <td><%=getVal(item.AU,model.AU,0) %>V</td>
+                    <td><%=getVal(item.BU,model.BU,0) %>V</td>
+                    <td><%=getVal(item.CU,model.CU,0) %>V</td>
                     <td><%=getVal(item.LI,model.LI,warningmodel.LI) %>mA</td>
                     <td><%=getVal(item.Temp1,model.OneTemperature,warningmodel.OneTemperature) %>℃</td>
                     <td><%=getVal(item.Temp2,model.TwoTemperature,warningmodel.TwoTemperature) %>℃</td>
                     <td><%=getVal(item.Temp3,model.ThreeTemperature,warningmodel.ThreeTemperature) %>℃</td>
                     <td><%=getVal(item.Temp4,model.FourTemperature,warningmodel.FourTemperature) %>℃</td>
-                    <td><%=getVal(item.AU,model.AU,0) %>V</td>
-                    <td><%=getVal(item.BU,model.BU,0) %>V</td>
-                    <td><%=getVal(item.CU,model.CU,0) %>V</td>
                     <td><%=item.addtime.ToString("yyyy-MM-dd HH:mm:ss") %></td>
                     <td><%=item.updatetime.HasValue?item.updatetime.Value.ToString("yyyy-MM-dd HH:mm:ss"):"" %></td>
 

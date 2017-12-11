@@ -103,14 +103,14 @@
                             <th align="left" width="60">A相电流</th>
                             <th align="left" width="60">B相电流</th>
                             <th align="left" width="60">C相电流</th>
+                            <th align="left" width="60">A相电压</th>
+                            <th align="left" width="60">B相电压</th>
+                            <th align="left" width="60">C相电压</th>
                             <th align="left" width="60">漏电流</th>
                             <th align="left" width="60">1路温度</th>
                             <th align="left" width="60">2路温度</th>
                             <th align="left" width="60">3路温度</th>
                             <th align="left" width="60">4路温度</th>
-                            <th align="left" width="60">1路电压</th>
-                            <th align="left" width="60">2路电压</th>
-                            <th align="left" width="60">3路电压</th>
                             <th align="left" width="120">更新时间</th>
                             <th>操作</th>
                         </tr>
@@ -135,14 +135,14 @@
                         <td><%=getVal(item.AI,item.trailerAI,0) %>A</td>
                         <td><%=getVal(item.BI,item.trailerBI,0) %>A</td>
                         <td><%=getVal(item.CI,item.trailerCI,0) %>A</td>
+                        <td><%=getVal(item.AU,item.trailerAV,0) %>V</td>
+                        <td><%=getVal(item.BU,item.trailerBV,0) %>V</td>
+                        <td><%=getVal(item.CU,item.trailerCV,0) %>V</td>
                         <td><%=getVal(item.LI,item.trailerLI,0) %>mA</td>
                         <td><%=getVal(item.Temp1,item.trailerOneTemperature,0) %>℃</td>
                         <td><%=getVal(item.Temp2,item.trailerTwoTemperature,0) %>℃</td>
                         <td><%=getVal(item.Temp3,item.trailerThreeTemperature,0) %>℃</td>
                         <td><%=getVal(item.Temp4,item.trailerFourTemperature,0) %>℃</td>
-                        <td><%=getVal(item.AU,item.trailerAV,0) %>V</td>
-                        <td><%=getVal(item.BU,item.trailerBV,0) %>V</td>
-                        <td><%=getVal(item.CU,item.trailerCV,0) %>V</td>
                         <td><%=item.updatetime.HasValue?item.updatetime.Value.ToString("yyyy-MM-dd HH:mm:ss"):"" %></td>
                         <td align="center">
                             <%

@@ -397,9 +397,9 @@ namespace OnenetDataGet
         }
         #endregion Model
         #region extend
-        public double AU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(42, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
-        public double BU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(46, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
-        public double CU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(50, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double AU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(42, 4).Substring(2) + _value.Substring(42, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double BU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(46, 4).Substring(2) + _value.Substring(46, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double CU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(50, 4).Substring(2) + _value.Substring(50, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
         public double DU { get; }
         public double EU { get; }
         public double FU { get; }
@@ -430,7 +430,7 @@ namespace OnenetDataGet
         public List<dt_item_ex> GetList(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select i.*,m.real_name,a.name as areaname,m.telphone FROM dt_item i left join dt_manager m on i.user_id=m.id left join dt_area_code a on i.area_code=a.code ");
+            strSql.Append("select i.*,m.real_name,a.name as areaname,m.telephone FROM dt_item i left join dt_manager m on i.user_id=m.id left join dt_area_code a on i.area_code=a.code ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);
@@ -441,6 +441,19 @@ namespace OnenetDataGet
         }
         #endregion
     }
-
+    public class trailerModel
+    {
+        public double AI { get; set; }
+        public double BI { get; set; }
+        public double CI { get; set; }
+        public double LI { get; set; }
+        public double OneTemperature { get; set; }
+        public double TwoTemperature { get; set; }
+        public double ThreeTemperature { get; set; }
+        public double FourTemperature { get; set; }
+        public double AU { get; set; }
+        public double BU { get; set; }
+        public double CU { get; set; }
+    }
 }
 
