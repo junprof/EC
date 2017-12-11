@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Text;
+using System.Linq;
 using System.Data.SqlClient;
 using DTcms.DBUtility;
 using DTcms.Common;
+using System.Collections.Generic;
 
 namespace DTcms.DAL
 {
@@ -423,115 +425,115 @@ namespace DTcms.DAL
                 }
                 if (row["warningAI"] != null && row["warningAI"].ToString() != "")
                 {
-                    model.warningAI = decimal.Parse(row["warningAI"].ToString());
+                    model.warningAI = double.Parse(row["warningAI"].ToString());
                 }
                 if (row["warningBI"] != null && row["warningBI"].ToString() != "")
                 {
-                    model.warningBI = decimal.Parse(row["warningBI"].ToString());
+                    model.warningBI = double.Parse(row["warningBI"].ToString());
                 }
                 if (row["warningCI"] != null && row["warningCI"].ToString() != "")
                 {
-                    model.warningCI = decimal.Parse(row["warningCI"].ToString());
+                    model.warningCI = double.Parse(row["warningCI"].ToString());
                 }
                 if (row["warningLI"] != null && row["warningLI"].ToString() != "")
                 {
-                    model.warningLI = decimal.Parse(row["warningLI"].ToString());
+                    model.warningLI = double.Parse(row["warningLI"].ToString());
                 }
                 if (row["warningOneTemperature"] != null && row["warningOneTemperature"].ToString() != "")
                 {
-                    model.warningOneTemperature = decimal.Parse(row["warningOneTemperature"].ToString());
+                    model.warningOneTemperature = double.Parse(row["warningOneTemperature"].ToString());
                 }
                 if (row["warningTwoTemperature"] != null && row["warningTwoTemperature"].ToString() != "")
                 {
-                    model.warningTwoTemperature = decimal.Parse(row["warningTwoTemperature"].ToString());
+                    model.warningTwoTemperature = double.Parse(row["warningTwoTemperature"].ToString());
                 }
                 if (row["warningThreeTemperature"] != null && row["warningThreeTemperature"].ToString() != "")
                 {
-                    model.warningThreeTemperature = decimal.Parse(row["warningThreeTemperature"].ToString());
+                    model.warningThreeTemperature = double.Parse(row["warningThreeTemperature"].ToString());
                 }
                 if (row["warningFourTemperature"] != null && row["warningFourTemperature"].ToString() != "")
                 {
-                    model.warningFourTemperature = decimal.Parse(row["warningFourTemperature"].ToString());
+                    model.warningFourTemperature = double.Parse(row["warningFourTemperature"].ToString());
                 }
                 if (row["trailerAI"] != null && row["trailerAI"].ToString() != "")
                 {
-                    model.trailerAI = decimal.Parse(row["trailerAI"].ToString());
+                    model.trailerAI = double.Parse(row["trailerAI"].ToString());
                 }
                 if (row["trailerBI"] != null && row["trailerBI"].ToString() != "")
                 {
-                    model.trailerBI = decimal.Parse(row["trailerBI"].ToString());
+                    model.trailerBI = double.Parse(row["trailerBI"].ToString());
                 }
                 if (row["trailerCI"] != null && row["trailerCI"].ToString() != "")
                 {
-                    model.trailerCI = decimal.Parse(row["trailerCI"].ToString());
+                    model.trailerCI = double.Parse(row["trailerCI"].ToString());
                 }
                 if (row["trailerLI"] != null && row["trailerLI"].ToString() != "")
                 {
-                    model.trailerLI = decimal.Parse(row["trailerLI"].ToString());
+                    model.trailerLI = double.Parse(row["trailerLI"].ToString());
                 }
                 if (row["trailerOneTemperature"] != null && row["trailerOneTemperature"].ToString() != "")
                 {
-                    model.trailerOneTemperature = decimal.Parse(row["trailerOneTemperature"].ToString());
+                    model.trailerOneTemperature = double.Parse(row["trailerOneTemperature"].ToString());
                 }
                 if (row["trailerTwoTemperature"] != null && row["trailerTwoTemperature"].ToString() != "")
                 {
-                    model.trailerTwoTemperature = decimal.Parse(row["trailerTwoTemperature"].ToString());
+                    model.trailerTwoTemperature = double.Parse(row["trailerTwoTemperature"].ToString());
                 }
                 if (row["trailerThreeTemperature"] != null && row["trailerThreeTemperature"].ToString() != "")
                 {
-                    model.trailerThreeTemperature = decimal.Parse(row["trailerThreeTemperature"].ToString());
+                    model.trailerThreeTemperature = double.Parse(row["trailerThreeTemperature"].ToString());
                 }
                 if (row["trailerFourTemperature"] != null && row["trailerFourTemperature"].ToString() != "")
                 {
-                    model.trailerFourTemperature = decimal.Parse(row["trailerFourTemperature"].ToString());
+                    model.trailerFourTemperature = double.Parse(row["trailerFourTemperature"].ToString());
                 }
                 if (row["trailerAV"] != null && row["trailerAV"].ToString() != "")
                 {
-                    model.trailerAV = decimal.Parse(row["trailerAV"].ToString());
+                    model.trailerAV = double.Parse(row["trailerAV"].ToString());
                 }
                 if (row["trailerBV"] != null && row["trailerBV"].ToString() != "")
                 {
-                    model.trailerBV = decimal.Parse(row["trailerBV"].ToString());
+                    model.trailerBV = double.Parse(row["trailerBV"].ToString());
                 }
                 if (row["trailerCV"] != null && row["trailerCV"].ToString() != "")
                 {
-                    model.trailerCV = decimal.Parse(row["trailerCV"].ToString());
+                    model.trailerCV = double.Parse(row["trailerCV"].ToString());
                 }
                 if (row["warningAV"] != null && row["warningAV"].ToString() != "")
                 {
-                    model.warningAV = decimal.Parse(row["warningAV"].ToString());
+                    model.warningAV = double.Parse(row["warningAV"].ToString());
                 }
                 if (row["warningBV"] != null && row["warningBV"].ToString() != "")
                 {
-                    model.warningBV = decimal.Parse(row["warningBV"].ToString());
+                    model.warningBV = double.Parse(row["warningBV"].ToString());
                 }
                 if (row["warningCV"] != null && row["warningCV"].ToString() != "")
                 {
-                    model.warningCV = decimal.Parse(row["warningCV"].ToString());
+                    model.warningCV = double.Parse(row["warningCV"].ToString());
                 }
                 if (row["trailerAV2"] != null && row["trailerAV2"].ToString() != "")
                 {
-                    model.trailerAV2 = decimal.Parse(row["trailerAV2"].ToString());
+                    model.trailerAV2 = double.Parse(row["trailerAV2"].ToString());
                 }
                 if (row["trailerBV2"] != null && row["trailerBV2"].ToString() != "")
                 {
-                    model.trailerBV2 = decimal.Parse(row["trailerBV2"].ToString());
+                    model.trailerBV2 = double.Parse(row["trailerBV2"].ToString());
                 }
                 if (row["trailerCV2"] != null && row["trailerCV2"].ToString() != "")
                 {
-                    model.trailerCV2 = decimal.Parse(row["trailerCV2"].ToString());
+                    model.trailerCV2 = double.Parse(row["trailerCV2"].ToString());
                 }
                 if (row["warningAV2"] != null && row["warningAV2"].ToString() != "")
                 {
-                    model.warningAV2 = decimal.Parse(row["warningAV2"].ToString());
+                    model.warningAV2 = double.Parse(row["warningAV2"].ToString());
                 }
                 if (row["warningBV2"] != null && row["warningBV2"].ToString() != "")
                 {
-                    model.warningBV2 = decimal.Parse(row["warningBV2"].ToString());
+                    model.warningBV2 = double.Parse(row["warningBV2"].ToString());
                 }
                 if (row["warningCV2"] != null && row["warningCV2"].ToString() != "")
                 {
-                    model.warningCV2 = decimal.Parse(row["warningCV2"].ToString());
+                    model.warningCV2 = double.Parse(row["warningCV2"].ToString());
                 }
                 if (row["isdel"] != null && row["isdel"].ToString() != "")
                 {
@@ -652,7 +654,7 @@ namespace DTcms.DAL
 			parameters[3].Value = PageIndex;
 			parameters[4].Value = 0;
 			parameters[5].Value = 0;
-			parameters[6].Value = strWhere;	
+			parameters[6].Value = strWhere;
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
@@ -671,6 +673,18 @@ namespace DTcms.DAL
             }
             recordCount = Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
             return DbHelperSQL.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));
+        }
+        public List<Model.dt_item_ex> GetList2(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select i.*,m.real_name,a.name as areaname FROM dt_item i left join dt_manager m on i.user_id=m.id left join dt_area_code a on i.area_code=a.code ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            recordCount = Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
+            var ds = DbHelperSQL.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));
+            return (from DataRow dr in ds.Tables[0].Rows select new DBRowConvertor(dr).ConvertToEntity<Model.dt_item_ex>()).ToList();
         }
         #endregion  ExtensionMethod
     }

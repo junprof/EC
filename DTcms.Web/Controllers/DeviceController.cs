@@ -135,7 +135,6 @@ namespace DTcms.Web.Controllers
 
         [HttpPost]
         [Route("GetReport")]
-        [AllowAnonymous]
         public HttpResponseMessage GetReport([FromBody]Model.ReportParam param)
         {
             if (!param.item_id.HasValue)
@@ -158,7 +157,11 @@ namespace DTcms.Web.Controllers
                 }
                 if (!string.IsNullOrEmpty(param.hid))
                 {
-                    where += " and a.hid = '"+param.hid+"'";
+                    var h = new BLL.dt_historydata().GetModel(new Guid(param.hid));
+                    if (h != null)
+                    {
+                        where += " and a.updatetime >= '" + h.updatetime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' and a.updatetime <= '" + param.endtime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                    }
                     new BLL.dt_msg().SetReaded(param.msgid);
                 }
                 BLL.dt_dimensioninfo bll = new BLL.dt_dimensioninfo();
@@ -192,7 +195,7 @@ namespace DTcms.Web.Controllers
                                  time = Convert.ToDateTime(g.Key),
                                  value = g.Max(p=>p.value)
                              };
-                    resObj.data = new { MessageCount = new MessageController().GetMsgCount(), ReportData = ex.OrderBy(p => p.time).ToList() };
+                    resObj.data = new { MessageCount = new BLL.dt_msg().GetUnRecordCount(CurrentUser.USERID), ReportData = ex.OrderBy(p => p.time).ToList() };
                 }
             }
             return Json(resObj);

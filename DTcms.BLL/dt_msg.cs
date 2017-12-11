@@ -114,6 +114,10 @@ namespace DTcms.BLL
         {
             return dal.GetRecordCount(strWhere);
         }
+        public int GetUnRecordCount(int user_id)
+        {
+            return dal.GetRecordCount($"t.user_id = {user_id} and state != 1");
+        }
         /// <summary>
         /// 分页获取数据列表
         /// </summary>

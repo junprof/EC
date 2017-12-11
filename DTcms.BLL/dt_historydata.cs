@@ -125,7 +125,7 @@ namespace DTcms.BLL
                 };
                 items.Add(item);
             });
-            
+
             return items;
         }
 
@@ -159,6 +159,10 @@ namespace DTcms.BLL
         public DataSet GetList(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
         {
             return dal.GetList(pageSize, pageIndex, strWhere, filedOrder, out recordCount);
+        }
+        public List<Model.dt_historydata_ex> GetList2(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+        {
+            return dal.GetList2(pageSize, pageIndex, strWhere, filedOrder, out recordCount);
         }
         #endregion  ExtensionMethod
     }

@@ -24,7 +24,7 @@ namespace DTcms.Model
         private string _trailerval;
         private string _warningval;
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Guid id
         {
@@ -40,7 +40,7 @@ namespace DTcms.Model
             get { return _name; }
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string value
         {
@@ -56,7 +56,7 @@ namespace DTcms.Model
             get { return _addtime; }
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime? updatetime
         {
@@ -96,7 +96,7 @@ namespace DTcms.Model
             get { return _datahead; }
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int? item_id
         {
@@ -128,7 +128,31 @@ namespace DTcms.Model
             get { return _warningval; }
         }
         #endregion Model
-
+        public double AU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(42, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double BU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(46, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double CU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(50, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double DU { get; }
+        public double EU { get; }
+        public double FU { get; }
+        public double GU { get; }
+        public double HU { get; }
+        //A相电流
+        public double AI { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(14, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double BI { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(18, 4).Substring(2) + _value.Substring(18, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double CI { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(22, 4).Substring(2) + _value.Substring(22, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        /// <summary>
+        /// 漏电
+        /// </summary>
+        public double LI { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(98, 4).Substring(2) + _value.Substring(98, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        //1-4路温度
+        public double Temp1 { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(102, 4).Substring(2) + _value.Substring(102, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double Temp2 { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(106, 4).Substring(2) + _value.Substring(106, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double Temp3 { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(126, 4).Substring(2) + _value.Substring(126, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double Temp4 { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(130, 4).Substring(2) + _value.Substring(130, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+    }
+    public class dt_historydata_ex : dt_historydata
+    {
+        public int user_id { get; set; }
     }
 }
 

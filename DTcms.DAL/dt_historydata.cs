@@ -310,7 +310,7 @@ namespace DTcms.DAL
             {
                 strSql.Append(" where " + strWhere);
             }
-            
+
             var ds= DbHelperSQL.Query(strSql.ToString());
             var dt = ds.Tables[0];
             return (from DataRow dr in dt.Rows select new Common.DBRowConvertor(dr).ConvertToEntity<Model.dt_historydata>()).ToList();
@@ -398,7 +398,7 @@ namespace DTcms.DAL
 			parameters[3].Value = PageIndex;
 			parameters[4].Value = 0;
 			parameters[5].Value = 0;
-			parameters[6].Value = strWhere;	
+			parameters[6].Value = strWhere;
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
@@ -418,9 +418,21 @@ namespace DTcms.DAL
             recordCount = Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
             return DbHelperSQL.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));
         }
-            /// <summary>
-            /// 获得数据列表
-            /// </summary>
+        public List<Model.dt_historydata_ex> GetList2(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select h.*,i.user_id FROM dt_historydata h left join dt_item i on i.id=h.item_id");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            recordCount = Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
+            var ds= DbHelperSQL.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));
+            return (from DataRow dr in ds.Tables[0].Rows select new DBRowConvertor(dr).ConvertToEntity<Model.dt_historydata_ex>()).ToList();
+        }
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
         public DataSet GetList_json(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();

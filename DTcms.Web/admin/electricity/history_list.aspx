@@ -86,27 +86,22 @@
                     <th align="left" width="60">2路温度</th>
                     <th align="left" width="60">3路温度</th>
                     <th align="left" width="60">4路温度</th>
+                    <th align="left" width="60">1路电压</th>
+                    <th align="left" width="60">2路电压</th>
+                    <th align="left" width="60">3路电压</th>
+                    <th align="left" width="120">新增时间</th>
                     <th align="left" width="120">更新时间</th>
-                    <th align="left" width="120">查询时间</th>
                 </tr>
                 <%
-                    if (ds != null && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                    if (datalist != null && datalist.Count > 0)
                     {
-                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                        int i = 0;
+                        foreach (var item in datalist)
                         {
-                            string val = ds.Tables[0].Rows[i]["value"].ToString();
-                            string AI = val.Substring(14, 4);//A相电流
-                            string BI = val.Substring(18, 4);//B相电流
-                            string CI = val.Substring(22, 4);//C相电流
-                            string LI = val.Substring(98, 4);//漏电流
-                            string OneTemperature = val.Substring(102, 4);//1路温度
-                            string TwoTemperature = val.Substring(106, 4);//2路温度
-                            string ThreeTemperature = val.Substring(126, 4);//3路温度
-                            string FourTemperature = val.Substring(130, 4);//4路温度
+                            i++;
+                            DTcms.Model.trailerModel model = JsonHelper.JSONToObject<DTcms.Model.trailerModel>(item.trailerval);
 
-                            DTcms.Model.trailerModel model = JsonHelper.JSONToObject<DTcms.Model.trailerModel>(ds.Tables[0].Rows[i]["trailerval"].ToString());
-
-                            DTcms.Model.trailerModel warningmodel = JsonHelper.JSONToObject<DTcms.Model.trailerModel>(ds.Tables[0].Rows[i]["warningval"].ToString());
+                            DTcms.Model.trailerModel warningmodel = JsonHelper.JSONToObject<DTcms.Model.trailerModel>(item.warningval);
 
                             if (model == null)
                             {
@@ -122,29 +117,32 @@
                 <tr>
                     <td align="center">
                         <label class="checkall">
-                            <input type="checkbox" name="chkId" value="<%=ds.Tables[0].Rows[i]["id"] %>" /></label>
+                            <input type="checkbox" name="chkId" value="<%=item.id %>" /></label>
                     </td>
-                    <td><%=ds.Tables[0].Rows[i]["online"]==null?"":!Convert.ToBoolean(ds.Tables[0].Rows[i]["online"])?"离线":"在线"%></td>
-                    <td><%=getVal(AI,model.AI,warningmodel.AI) %>A</td>
-                    <td><%=getVal(BI,model.BI,warningmodel.BI) %>A</td>
-                    <td><%=getVal(CI,model.CI,warningmodel.CI) %>A</td>
-                    <td><%=getVal(LI,model.LI,warningmodel.LI) %>mA</td>
-                    <td><%=getVal(OneTemperature,model.OneTemperature,warningmodel.OneTemperature) %>℃</td>
-                    <td><%=getVal(TwoTemperature,model.TwoTemperature,warningmodel.TwoTemperature) %>℃</td>
-                    <td><%=getVal(ThreeTemperature,model.ThreeTemperature,warningmodel.ThreeTemperature) %>℃</td>
-                    <td><%=getVal(FourTemperature,model.FourTemperature,warningmodel.FourTemperature) %>℃</td>
-                    <td><%=ds.Tables[0].Rows[i]["updatetime"]!=null?Convert.ToDateTime(ds.Tables[0].Rows[i]["updatetime"]).ToString("yyyy-MM-dd HH:mm:ss"):"" %></td>
-                    <td><%=ds.Tables[0].Rows[i]["addtime"]!=null?Convert.ToDateTime(ds.Tables[0].Rows[i]["addtime"]).ToString("yyyy-MM-dd HH:mm:ss"):"" %></td>
+                    <td><%=item.online?"在线":"离线"%></td>
+                    <td><%=getVal(item.AI,model.AI,warningmodel.AI) %>A</td>
+                    <td><%=getVal(item.BI,model.BI,warningmodel.BI) %>A</td>
+                    <td><%=getVal(item.CI,model.CI,warningmodel.CI) %>A</td>
+                    <td><%=getVal(item.LI,model.LI,warningmodel.LI) %>mA</td>
+                    <td><%=getVal(item.Temp1,model.OneTemperature,warningmodel.OneTemperature) %>℃</td>
+                    <td><%=getVal(item.Temp2,model.TwoTemperature,warningmodel.TwoTemperature) %>℃</td>
+                    <td><%=getVal(item.Temp3,model.ThreeTemperature,warningmodel.ThreeTemperature) %>℃</td>
+                    <td><%=getVal(item.Temp4,model.FourTemperature,warningmodel.FourTemperature) %>℃</td>
+                    <td><%=getVal(item.AU,model.AU,0) %>V</td>
+                    <td><%=getVal(item.BU,model.BU,0) %>V</td>
+                    <td><%=getVal(item.CU,model.CU,0) %>V</td>
+                    <td><%=item.addtime.ToString("yyyy-MM-dd HH:mm:ss") %></td>
+                    <td><%=item.updatetime.HasValue?item.updatetime.Value.ToString("yyyy-MM-dd HH:mm:ss"):"" %></td>
 
                 </tr>
                 <%
+                        }
                     }
-                }
-                else
-                {
+                    else
+                    {
                 %>
                 <tr>
-                    <td align="center" colspan="13">暂无记录</td>
+                    <td align="center" colspan="15">暂无记录</td>
                 </tr>
                 <%
                     }

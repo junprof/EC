@@ -277,7 +277,7 @@ namespace DTcms.DAL
         public int GetRecordCount(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select count(1) FROM dt_msg ");
+            strSql.Append("select count(1) FROM dt_msg t");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);

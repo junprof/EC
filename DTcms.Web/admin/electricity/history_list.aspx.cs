@@ -15,6 +15,7 @@ namespace DTcms.Web.admin.electricity
         protected int page;
         protected int pageSize;
         protected DataSet ds;
+        protected List<Model.dt_historydata_ex> datalist;
         protected string keywords = string.Empty, hid=string.Empty;
         protected int state, online,id;
 
@@ -49,7 +50,8 @@ namespace DTcms.Web.admin.electricity
             //txtKeywords.Text = this.keywords;
             this.page = DTRequest.GetQueryInt("page", 1);
             BLL.dt_historydata bll = new BLL.dt_historydata();
-            ds = bll.GetList(this.pageSize, this.page, _strWhere, _orderby, out this.totalCount);
+            //ds = bll.GetList(this.pageSize, this.page, _strWhere, _orderby, out this.totalCount);
+            datalist = bll.GetList2(this.pageSize, this.page, _strWhere, _orderby, out this.totalCount);
             //绑定页码
             txtPageNum.Text = this.pageSize.ToString();
             string pageUrl = Utils.CombUrlTxt("history_list.aspx", "keywords={0}&page={1}&online={2}&id={3}", this.keywords, "__id__", this.online.ToString(), this.id.ToString());
@@ -140,7 +142,14 @@ namespace DTcms.Web.admin.electricity
             }
             return "<font title=\"预警值：" + trailerval + "，告警值：" + warningval + "\">" + res + "</font>";
         }
-
+        public string getVal(double val, double? trailerval, double? warningval)
+        {
+            if (trailerval.HasValue && trailerval != 0 && val >= trailerval)
+            {//超过告警值返回
+                return "<font color=\"#dca72c\" title=\"预警值：" + trailerval + "\">" + val + "</font>";
+            }
+            return "<font title=\"预警值：" + trailerval + "\">" + val + "</font>";
+        }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             Response.Redirect(Utils.CombUrlTxt("history_list.aspx", "keywords={0}&online={1}&id={2}",

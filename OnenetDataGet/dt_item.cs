@@ -1,5 +1,12 @@
-﻿using System;
-namespace DTcms.Model
+﻿using DTcms.Common;
+using DTcms.DBUtility;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace OnenetDataGet
 {
     /// <summary>
     /// dt_item:实体类(属性说明自动提取数据库字段的描述信息)
@@ -417,11 +424,23 @@ namespace DTcms.Model
     {
         public string real_name { get; set; }
         public string areaname { get; set; }
+        public string telephone { get; set; }
+
+        #region DAL
+        public List<dt_item_ex> GetList(int pageSize, int pageIndex, string strWhere, string filedOrder, out int recordCount)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select i.*,m.real_name,a.name as areaname,m.telphone FROM dt_item i left join dt_manager m on i.user_id=m.id left join dt_area_code a on i.area_code=a.code ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            recordCount = Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
+            var ds = DbHelperSQL.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));
+            return (from DataRow dr in ds.Tables[0].Rows select new DBRowConvertor(dr).ConvertToEntity<dt_item_ex>()).ToList();
+        }
+        #endregion
     }
-    public class dt_item_adq : PagerBase
-    {
-        public string devicename { get; set; }
-        public int? user_id { get; set; }
-    }
+
 }
 

@@ -44,7 +44,7 @@ namespace OnenetDataGet
             timer = new System.Timers.Timer();
             // 每隔10秒执行
             timer.Interval = 20 * 1000;
-            //设置是执行一次（false）还是一直执行(true)； 
+            //设置是执行一次（false）还是一直执行(true)；
             timer.AutoReset = true;
             //timer.AutoReset = false;
             //是否执行System.Timers.Timer.Elapsed事件；
@@ -77,18 +77,17 @@ namespace OnenetDataGet
             //}
             datacount = 0;
             timercount = 0;
+            int xhmaxcount = 500;
             curxcendcount = 0;//当前线程结束数量
             xccount = 0;//线程总数
             try
             {
+                int size = 500;
+                int index = 1;
+                int totalcount = 0;
+                List<dt_item_ex> datalist = new dt_item_ex().GetList(size, index, "i.state=2 and i.isdel!=1 ", " i.updatetime asc,i.id asc", out totalcount);
 
-                string[] strData = new string[] { "", "", "", "", "" };
-
-                //string strSql = "select top 121 * from Send where show=0 order by astate asc";
-                DTcms.BLL.dt_item obll = new DTcms.BLL.dt_item();
-                DataSet ds = obll.GetList(501, "i.state=2 and i.isdel!=1 ", " i.updatetime asc,i.id asc");
-                datacount = ds.Tables[0].Rows.Count;
-                int xhmaxcount = 500;
+                datacount = datalist.Count;
                 if (datacount < 501)
                 {
                     xhmaxcount = datacount;
@@ -104,7 +103,7 @@ namespace OnenetDataGet
                     //thread.Start();
 
                     callbackinfo _callbackinfo = new callbackinfo();
-                    _callbackinfo.Ds = ds;
+                    _callbackinfo.data = datalist;
                     _callbackinfo.Startindex = (i * 8);
                     _callbackinfo.Endindex = (i + 1) * 8 - 1;
                     if (_callbackinfo.Endindex > xhmaxcount - 1)
@@ -115,11 +114,11 @@ namespace OnenetDataGet
                     TaskList.Add(task);
 
                 }
-                //异步等待所有任务执行完毕  
+                //异步等待所有任务执行完毕
                 Task.Factory.StartNew(x =>
                 {
                     Task.WaitAll(TaskList.ToArray());
-                    //标记所有任务运行完成  
+                    //标记所有任务运行完成
                     isAllComplete = true;
                     if (datacount > 500)
                     {
@@ -158,9 +157,9 @@ namespace OnenetDataGet
         public static string DropHTML(string Htmlstring)
         {
             if (string.IsNullOrEmpty(Htmlstring)) return "";
-            //删除脚本  
+            //删除脚本
             Htmlstring = Regex.Replace(Htmlstring, @"<script[^>]*?>.*?</script>", "", RegexOptions.IgnoreCase);
-            //删除HTML  
+            //删除HTML
             Htmlstring = Regex.Replace(Htmlstring, @"<(.[^>]*)>", "", RegexOptions.IgnoreCase);
             Htmlstring = Regex.Replace(Htmlstring, @"([\r\n])[\s]+", "", RegexOptions.IgnoreCase);
             Htmlstring = Regex.Replace(Htmlstring, @"-->", "", RegexOptions.IgnoreCase);
@@ -183,17 +182,16 @@ namespace OnenetDataGet
             return Htmlstring;
         }
         #endregion
-
+        #region old
+        /*
         public static void callback(Object o)
         {
             string pc = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             try
             {
-                DTcms.BLL.dt_msg bll = new DTcms.BLL.dt_msg();
-
-                string[] strData = new string[] { "", "", "", "", "" };
                 callbackinfo smsc = (callbackinfo)o;
                 DataSet ds = smsc.Ds;
+
                 List<string> sqlstr = new List<string>();
                 List<string> updatesql = new List<string>();
                 List<string> msgsql = new List<string>();
@@ -244,9 +242,12 @@ namespace OnenetDataGet
                             if (item_s.id == "K1")
                             {
                                 val = item_s.value;
+                                val = val.Replace("FFFFFFFFFFFFFFFFFFFFFFFFFFFF", "").Replace("FFFFFFFDEFBFFFFFFFFFFFFFBFFF", "");
                                 updatetime = item_s.at;
                             }
                         }
+                        if (val.Length != 140)
+                            continue;
                         var q = ds.Tables[0].Select($" onenetnum='{item.id}' ");
                         if (q.Length > 0)
                         {
@@ -254,12 +255,13 @@ namespace OnenetDataGet
                             string BI = val.Substring(18, 4);//B相电流
                             string CI = val.Substring(22, 4);//C相电流
                             string LI = val.Substring(98, 4);//漏电流
+
                             string OneTemperature = val.Substring(102, 4);//1路温度
                             string TwoTemperature = val.Substring(106, 4);//2路温度
                             string ThreeTemperature = val.Substring(126, 4);//3路温度
                             string FourTemperature = val.Substring(130, 4);//4路温度
 
-                            
+
                             int statevalAI = getVal(AI, Convert.ToDouble(q[0]["trailerAI"]), Convert.ToDouble(q[0]["warningAI"]),ref AIVAL);
                             int statevalBI = getVal(BI, Convert.ToDouble(q[0]["trailerBI"]), Convert.ToDouble(q[0]["warningBI"]),ref BIVAL);
                             int statevalCI = getVal(CI, Convert.ToDouble(q[0]["trailerCI"]), Convert.ToDouble(q[0]["warningCI"]),ref CIVAL);
@@ -385,7 +387,7 @@ namespace OnenetDataGet
 
                             }
                         }
-                        
+
 
                         string trailerval = "{\"AI\":"+ q[0]["trailerAI"] + ",\"BI\":"+ q[0]["trailerBI"] + ",\"CI\":"+ q[0]["trailerCI"] + ",\"LI\":"+ q[0]["trailerLI"] + ",\"OneTemperature\":"+ q[0]["trailerOneTemperature"]
                             + ",\"TwoTemperature\":"+ q[0]["trailerTwoTemperature"] + ",\"ThreeTemperature\":"+ q[0]["trailerThreeTemperature"] + ",\"FourTemperature\":"+ q[0]["trailerFourTemperature"] + " }";
@@ -407,7 +409,7 @@ namespace OnenetDataGet
 
                         foreach (var dic in msgdic)
                         {
-                            if (bll.GetRecordCount($" addtime >= convert(datetime,convert(varchar(10),GETDATE(),120)) and isprocessed <> 1 and item_id = {q[0]["id"]} and dim_id = {dic.Key} ") == 0)
+                            if (dt_msg.GetRecordCount($" addtime >= convert(datetime,convert(varchar(10),GETDATE(),120)) and isprocessed <> 1 and item_id = {q[0]["id"]} and dim_id = {dic.Key} ") == 0)
                             {
                                 msgsql.Add($" insert into dt_msg(id,hid,title,item_id,addtime,phone,user_id,state,content,dim_id) values('{Guid.NewGuid().ToString()}','{id}','{$"您的设备({q[0]["name"].ToString().Replace("'", "")})有预警消息"}',{q[0]["id"]},getdate(),'{q[0]["telephone"]}',{q[0]["user_id"]},0,'{dic.Value}',{dic.Key}) ");
                             }
@@ -439,7 +441,7 @@ namespace OnenetDataGet
                     Console.WriteLine(pc + "操作失败1");
                 }
 
-                
+
                 //for (int i = smsc.Startindex; i <= smsc.Endindex; i++)
                 //{
                 //    sqlstr += "INSERT INTO dt_historydata([name],[value],[addtime],[updatetime],[type],[checkcode],[functioncode],[datahead])";
@@ -453,7 +455,284 @@ namespace OnenetDataGet
                 Console.WriteLine(pc + "操作失败");
             }
         }
+        */
+        #endregion
+        public static void callback(object o)
+        {
+            string pc = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            try
+            {
+                callbackinfo smsc = o as callbackinfo;
+                List<dt_item_ex> data = smsc.data;
+                List<string> sqlstr = new List<string>();
+                List<string> updatesql = new List<string>();
+                List<string> msgsql = new List<string>();
+                List<string> dimsqllist = new List<string>();
+                string ids = data.Where();
+                for (int i = smsc.Startindex; i <= smsc.Endindex; i++)
+                {
+                    ids += "," + ds.Tables[0].Rows[i]["onenetnum"];
+                }
+                ids = ids.Substring(1);
 
+                Dictionary<string, string> dclist = new Dictionary<string, string>();
+                dclist.Add("api-key", "9ei=2lJcB3sRIHVzXIL1M5wsRh8=");
+                //查询设备状态
+                string stateres = Utils.SendRequest("http://api.heclouds.com/devices/status", "GET", "?devIds=" + ids, dclist, 0);//批量查询设备状态
+
+                string res = Utils.SendRequest("http://api.heclouds.com/devices/datapoints", "GET", "?devIds=" + ids, dclist, 0);//批量查询设备最新数据  限制一次最多1000个设备
+                if (stateres != "发生异常" && res != "发生异常")
+                {
+                    DatapointsModel datapointsModel = JsonHelper.JSONToObject<DatapointsModel>(res);//解析Json数据
+                    DataStatusModel dataStatusModel = JsonHelper.JSONToObject<DataStatusModel>(stateres);//解析Json数据
+
+                    Dictionary<int, string> msgdic = new Dictionary<int, string>();
+                    foreach (var item in datapointsModel.data.devices)
+                    {
+                        msgdic.Clear();
+                        double AIVAL = 0;
+                        double BIVAL = 0;
+                        double CIVAL = 0;
+                        double LIVAL = 0;
+                        double OneTemperatureVAL = 0;
+                        double TwoTemperatureVAL = 0;
+                        double ThreeTemperatureVAL = 0;
+                        double FourTemperatureVAL = 0;
+                        string val = "";
+                        string updatetime = "";
+                        int online = 0;
+                        var m = dataStatusModel.data.devices.SingleOrDefault(x => x.id == item.id);
+                        if (m != null)
+                        {
+                            if (m.online)
+                                online = 1;
+                            else
+                                online = 0;
+                        }
+                        foreach (var item_s in item.datastreams)
+                        {
+                            if (item_s.id == "K1")
+                            {
+                                val = item_s.value;
+                                val = val.Replace("FFFFFFFFFFFFFFFFFFFFFFFFFFFF", "").Replace("FFFFFFFDEFBFFFFFFFFFFFFFBFFF", "");
+                                updatetime = item_s.at;
+                            }
+                        }
+                        if (val.Length != 140)
+                            continue;
+                        var q = ds.Tables[0].Select($" onenetnum='{item.id}' ");
+                        if (q.Length > 0)
+                        {
+                            string AI = val.Substring(14, 4);//A相电流
+                            string BI = val.Substring(18, 4);//B相电流
+                            string CI = val.Substring(22, 4);//C相电流
+                            string LI = val.Substring(98, 4);//漏电流
+
+                            string OneTemperature = val.Substring(102, 4);//1路温度
+                            string TwoTemperature = val.Substring(106, 4);//2路温度
+                            string ThreeTemperature = val.Substring(126, 4);//3路温度
+                            string FourTemperature = val.Substring(130, 4);//4路温度
+
+
+                            int statevalAI = getVal(AI, Convert.ToDouble(q[0]["trailerAI"]), Convert.ToDouble(q[0]["warningAI"]), ref AIVAL);
+                            int statevalBI = getVal(BI, Convert.ToDouble(q[0]["trailerBI"]), Convert.ToDouble(q[0]["warningBI"]), ref BIVAL);
+                            int statevalCI = getVal(CI, Convert.ToDouble(q[0]["trailerCI"]), Convert.ToDouble(q[0]["warningCI"]), ref CIVAL);
+                            int statevalLI = getVal(LI, Convert.ToDouble(q[0]["trailerLI"]), Convert.ToDouble(q[0]["warningLI"]), ref LIVAL);
+
+                            int stateOneTemperature = getVal(OneTemperature, Convert.ToDouble(q[0]["trailerOneTemperature"]), Convert.ToDouble(q[0]["warningOneTemperature"]), ref OneTemperatureVAL);
+                            int stateTwoTemperature = getVal(TwoTemperature, Convert.ToDouble(q[0]["trailerTwoTemperature"]), Convert.ToDouble(q[0]["warningTwoTemperature"]), ref TwoTemperatureVAL);
+                            int stateThreeTemperature = getVal(ThreeTemperature, Convert.ToDouble(q[0]["trailerThreeTemperature"]), Convert.ToDouble(q[0]["warningThreeTemperature"]), ref ThreeTemperatureVAL);
+                            int stateFourTemperature = getVal(FourTemperature, Convert.ToDouble(q[0]["trailerFourTemperature"]), Convert.ToDouble(q[0]["warningFourTemperature"]), ref FourTemperatureVAL);
+                            if (statevalAI != 0 || statevalBI != 0 || statevalCI != 0 || statevalLI != 0 || stateOneTemperature != 0 || stateTwoTemperature != 0 || stateThreeTemperature != 0 || stateFourTemperature != 0)
+                            {
+                                //if (statevalAI == 1 || statevalBI == 1 || statevalCI == 1 || statevalLI == 1 || stateOneTemperature == 1 || stateTwoTemperature == 1 || stateThreeTemperature == 1 || stateFourTemperature == 1)
+                                //{
+                                //    havetrailer = true;
+                                //}
+                                if (statevalAI == 1)
+                                {
+                                    msgdic.Add(1, $"电流超出预警（{AI}A）");
+                                }
+                                if (statevalBI == 1)
+                                {
+                                    msgdic.Add(2, $"电流超出预警（{BI}A）");
+                                }
+                                if (statevalCI == 1)
+                                {
+                                    msgdic.Add(3, $"电流超出预警（{CI}A）");
+                                }
+                                if (statevalLI == 1)
+                                {
+                                    msgdic.Add(10, $"电流超出预警（{LI}A）");
+                                }
+                                if (stateOneTemperature == 1)
+                                {
+                                    msgdic.Add(11, $"超温预警（{OneTemperature}℃）");
+                                }
+                                if (stateTwoTemperature == 1)
+                                {
+                                    msgdic.Add(12, $"超温预警（{TwoTemperature}℃）");
+                                }
+                                if (stateThreeTemperature == 1)
+                                {
+                                    msgdic.Add(13, $"超温预警（{ThreeTemperature}℃）");
+                                }
+                                if (stateFourTemperature == 1)
+                                {
+                                    msgdic.Add(14, $"超温预警（{FourTemperature}℃）");
+                                }
+                                #region 注释
+                                //string content = "";
+                                //if (statevalAI == 1)
+                                //{//表示达到预警值
+                                //    content = "，A相电流预警";
+                                //}
+                                //else if (statevalAI == 2)
+                                //{//表示达到告警值
+                                //    content = "，A相电流告警";
+                                //}
+
+                                //if (statevalBI == 1)
+                                //{//表示达到预警值
+                                //    content = "，B相电流预警";
+                                //}
+                                //else if (statevalBI == 2)
+                                //{//表示达到告警值
+                                //    content = "，B相电流告警";
+                                //}
+
+                                //if (statevalCI == 1)
+                                //{//表示达到预警值
+                                //    content = "，C相电流预警";
+                                //}
+                                //else if (statevalCI == 2)
+                                //{//表示达到告警值
+                                //    content = "，C相电流告警";
+                                //}
+
+                                //if (statevalLI == 1)
+                                //{//表示达到预警值
+                                //    content = "，漏电流预警";
+                                //}
+                                //else if (statevalLI == 2)
+                                //{//表示达到告警值
+                                //    content = "，漏电流告警";
+                                //}
+
+                                //if (stateOneTemperature == 1)
+                                //{//表示达到预警值
+                                //    content = "，1路温度预警";
+                                //}
+                                //else if (stateOneTemperature == 2)
+                                //{//表示达到告警值
+                                //    content = "，1路温度告警";
+                                //}
+
+                                //if (stateTwoTemperature == 1)
+                                //{//表示达到预警值
+                                //    content = "，2路温度预警";
+                                //}
+                                //else if (stateTwoTemperature == 2)
+                                //{//表示达到告警值
+                                //    content = "，2路温度告警";
+                                //}
+
+                                //if (stateThreeTemperature == 1)
+                                //{//表示达到预警值
+                                //    content = "，3路温度预警";
+                                //}
+                                //else if (stateThreeTemperature == 2)
+                                //{//表示达到告警值
+                                //    content = "，3路温度告警";
+                                //}
+
+                                //if (stateFourTemperature == 1)
+                                //{//表示达到预警值
+                                //    content = "，4路温度预警";
+                                //}
+                                //else if (stateFourTemperature == 2)
+                                //{//表示达到告警值
+                                //    content = "，4路温度告警";
+                                //}
+                                #endregion
+                                //msg += content.Substring(1);
+
+                            }
+                        }
+
+
+                        string trailerval = "{\"AI\":" + q[0]["trailerAI"] + ",\"BI\":" + q[0]["trailerBI"] + ",\"CI\":" + q[0]["trailerCI"] + ",\"LI\":" + q[0]["trailerLI"] + ",\"OneTemperature\":" + q[0]["trailerOneTemperature"]
+                            + ",\"TwoTemperature\":" + q[0]["trailerTwoTemperature"] + ",\"ThreeTemperature\":" + q[0]["trailerThreeTemperature"] + ",\"FourTemperature\":" + q[0]["trailerFourTemperature"] + " }";
+
+                        string warningval = "{\"AI\":" + q[0]["warningAI"] + ",\"BI\":" + q[0]["warningBI"] + ",\"CI\":" + q[0]["warningCI"] + ",\"LI\":" + q[0]["warningLI"] + ",\"OneTemperature\":" + q[0]["warningOneTemperature"]
+                            + ",\"TwoTemperature\":" + q[0]["warningTwoTemperature"] + ",\"ThreeTemperature\":" + q[0]["warningThreeTemperature"] + ",\"FourTemperature\":" + q[0]["warningFourTemperature"] + " }";
+                        string id = System.Guid.NewGuid().ToString();
+                        sqlstr.Add($" insert into dt_historydata(id,name,value,addtime,updatetime,type,item_id,online,trailerval,warningval)  values('{id}','K1','{val}',getdate(),'{updatetime}',1,{q[0]["id"]},{online},'{trailerval}','{warningval}') ");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid) values(1,{AIVAL},{Convert.ToDouble(q[0]["trailerAI"])},{Convert.ToDouble(q[0]["warningAI"])},getdate(),'{id}')");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid) values(2,{BIVAL},{Convert.ToDouble(q[0]["trailerBI"])},{Convert.ToDouble(q[0]["warningBI"])},getdate(),'{id}')");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid) values(3,{CIVAL},{Convert.ToDouble(q[0]["trailerCI"])},{Convert.ToDouble(q[0]["warningCI"])},getdate(),'{id}')");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid)  values(10,{LIVAL},{Convert.ToDouble(q[0]["trailerLI"])},{Convert.ToDouble(q[0]["warningLI"])},getdate(),'{id}')");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid) values(11,{OneTemperatureVAL},{Convert.ToDouble(q[0]["trailerOneTemperature"])},{Convert.ToDouble(q[0]["warningOneTemperature"])},getdate(),'{id}')");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid)  values(12,{TwoTemperatureVAL},{Convert.ToDouble(q[0]["trailerTwoTemperature"])},{Convert.ToDouble(q[0]["warningTwoTemperature"])},getdate(),'{id}')");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid) values(13,{ThreeTemperatureVAL},{Convert.ToDouble(q[0]["trailerThreeTemperature"])},{Convert.ToDouble(q[0]["warningThreeTemperature"])},getdate(),'{id}')");
+                        dimsqllist.Add($"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid) values(14,{FourTemperatureVAL},{Convert.ToDouble(q[0]["trailerFourTemperature"])},{Convert.ToDouble(q[0]["warningFourTemperature"])},getdate(),'{id}')");
+
+                        updatesql.Add($" update dt_item set value='{val}',updatetime='{updatetime}',online={online} where onenetnum='{item.id}' ");
+
+                        foreach (var dic in msgdic)
+                        {
+                            if (dt_msg.GetRecordCount($" addtime >= convert(datetime,convert(varchar(10),GETDATE(),120)) and isprocessed <> 1 and item_id = {q[0]["id"]} and dim_id = {dic.Key} ") == 0)
+                            {
+                                msgsql.Add($" insert into dt_msg(id,hid,title,item_id,addtime,phone,user_id,state,content,dim_id) values('{Guid.NewGuid().ToString()}','{id}','{$"您的设备({q[0]["name"].ToString().Replace("'", "")})有预警消息"}',{q[0]["id"]},getdate(),'{q[0]["telephone"]}',{q[0]["user_id"]},0,'{dic.Value}',{dic.Key}) ");
+                            }
+                        }
+                    }
+
+                    if (DbHelperSQL.ExecuteSqlTran(sqlstr) > 0)
+                    {
+                        DbHelperSQL.ExecuteSqlTran(dimsqllist);
+                        DbHelperSQL.ExecuteSqlTran(updatesql);
+
+                        if (msgsql.Count > 0)
+                        {
+                            DbHelperSQL.ExecuteSqlTran(msgsql);
+                        }
+
+                        Log.Info(pc + "\r\n" + ids + "\r\n");
+                        Console.WriteLine(pc + "操作成功");
+                    }
+                    else
+                    {
+                        Log.Fatal(pc + "\r\n" + ids + "\r\n");
+                        Console.WriteLine(pc + "操作失败");
+                    }
+
+
+                }
+                else
+                {
+                    Log.Fatal(pc + "\r\n" + ids + "\r\n");
+                    Console.WriteLine(pc + "操作失败1");
+                }
+
+
+                //for (int i = smsc.Startindex; i <= smsc.Endindex; i++)
+                //{
+                //    sqlstr += "INSERT INTO dt_historydata([name],[value],[addtime],[updatetime],[type],[checkcode],[functioncode],[datahead])";
+                //    sqlstr += " VALUES('K1','')";
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+                Console.WriteLine(pc + "操作失败");
+            }
+        }
+        static string insertdimsql(int dim_id,double val,double trailerval,double warningval,DateTime updatetime,string hid)
+        {
+            return $"insert into dt_dimensioninfo(dimension,value,trailerval,warningval,updatetime,hid) values({dim_id},{val},{trailerval},{warningval},'{updatetime}','{hid}')";
+        }
         /// <summary>
         /// 获取预警或告警的状态 2：表示达到告警值，1：表示达到预警值，0：表示正常
         /// </summary>
@@ -530,13 +809,7 @@ namespace OnenetDataGet
 
     public class callbackinfo
     {
-        private DataSet ds;
-
-        public DataSet Ds
-        {
-            get { return ds; }
-            set { ds = value; }
-        }
+        public List<dt_item_ex> data { get; set; }
 
         private int startindex = 0;
 

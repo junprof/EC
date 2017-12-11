@@ -15,6 +15,7 @@ namespace DTcms.Web.admin.electricity
         protected int page;
         protected int pageSize;
         protected DataSet ds;
+        protected List<Model.dt_item_ex> datalist;
         protected string keywords = string.Empty;
         protected int state;//状态
         protected int online;//在线状态
@@ -61,7 +62,8 @@ namespace DTcms.Web.admin.electricity
             BLL.dt_item bll = new BLL.dt_item();
             //this.rptList.DataSource = bll.GetList(this.pageSize, this.page, _strWhere, _orderby, out this.totalCount);
             //this.rptList.DataBind();
-            ds = bll.GetList(this.pageSize, this.page, _strWhere, _orderby, out this.totalCount);
+            //ds = bll.GetList(this.pageSize, this.page, _strWhere, _orderby, out this.totalCount);
+            datalist = bll.GetList2(this.pageSize, this.page, _strWhere, _orderby, out this.totalCount);
             //绑定页码
             txtPageNum.Text = this.pageSize.ToString();
             string pageUrl = Utils.CombUrlTxt("electricity_list.aspx", "keywords={0}&page={1}&state={2}&online={3}", this.keywords, "__id__", this.state.ToString(), this.online.ToString());
@@ -168,6 +170,18 @@ namespace DTcms.Web.admin.electricity
             {
                 return "0";
             }
+        }
+        public string getVal(double val, double? trailerval, double? warningval)
+        {
+            if (warningval.HasValue && warningval != 0 && val >= warningval)
+            {//超过告警值返回
+                return "<font color=\"red\">" + val + "</font>";
+            }
+            if (trailerval.HasValue && trailerval != 0 && val >= trailerval)
+            {//超过告警值返回
+                return "<font color=\"#dca72c\">" + val + "</font>";
+            }
+            return val.ToString();
         }
 
         protected void btnLock_Click(object sender, EventArgs e)

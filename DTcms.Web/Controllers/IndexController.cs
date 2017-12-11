@@ -15,7 +15,7 @@ namespace DTcms.Web.Controllers
             pv.GetViews();
             resObj.data = new {
                 Messages = new BLL.dt_msg().GetListByPage(" t.user_id =" + CurrentUser.USERID, " addtime desc", 0, 5),
-                MessageCount = new MessageController().GetMsgCount(),
+                MessageCount = new BLL.dt_msg().GetUnRecordCount(CurrentUser.USERID),
                 PictureViewer = pv.resObj.data
             };
             return Json(resObj);

@@ -15,5 +15,8 @@ namespace DTcms.Model
         public double TwoTemperature { get; set; }
         public double ThreeTemperature { get; set; }
         public double FourTemperature { get; set; }
+        public double AU { get; set; }
+        public double BU { get; set; }
+        public double CU { get; set; }
     }
 }

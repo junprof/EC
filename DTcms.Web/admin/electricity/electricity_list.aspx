@@ -90,11 +90,11 @@
         <!--列表-->
         <div class="table-container">
             <!--文字列表-->
-            
+
                     <table width="1800" border="0" cellspacing="0" cellpadding="0" class="ltable" style="width:1800px;">
                         <tr>
                             <th width="60">选择</th>
-                            <th align="left">名称</th>
+                            <th align="left" width="150">名称</th>
                             <th align="left" width="100">设备ID</th>
                             <th align="left" width="100">用户</th>
                             <th align="left" width="120">地区</th>
@@ -111,72 +111,51 @@
                             <th align="left" width="60">1路电压</th>
                             <th align="left" width="60">2路电压</th>
                             <th align="left" width="60">3路电压</th>
-                            <th align="left" width="60">4路电压</th>
-                            <th align="left" width="60">5路电压</th>
-                            <th align="left" width="60">6路电压</th>
-                            <th align="left" width="60">7路电压</th>
-                            <th align="left" width="60">8路电压</th>
                             <th align="left" width="120">更新时间</th>
-                            <th width="90">操作</th>
+                            <th>操作</th>
                         </tr>
-                <%
-    if (ds!=null && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+<%
+    if (datalist!=null && datalist.Count > 0)
     {
-        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        int i = 0;
+        foreach(var item in datalist)
         {
-            string val = ds.Tables[0].Rows[i]["value"].ToString();
-            string AI = string.IsNullOrEmpty(val)?"":val.Substring(14, 4);//A相电流
-            string BI = string.IsNullOrEmpty(val)?"":val.Substring(18, 4);//B相电流
-            string CI = string.IsNullOrEmpty(val)?"":val.Substring(22, 4);//C相电流
-            string LI = string.IsNullOrEmpty(val)?"":val.Substring(98, 4);//漏电流
-            string OneTemperature = string.IsNullOrEmpty(val)?"":val.Substring(102, 4);//1路温度
-            string TwoTemperature = string.IsNullOrEmpty(val)?"":val.Substring(106, 4);//2路温度
-            string ThreeTemperature = string.IsNullOrEmpty(val)?"":val.Substring(126, 4);//3路温度
-            string FourTemperature = string.IsNullOrEmpty(val)?"":val.Substring(130, 4);//4路温度
-
-
+            i++;
                      %>
                     <tr>
                         <td align="center">
-                            <%--<asp:CheckBox ID="chkId" CssClass="checkall"  runat="server" Style="vertical-align: middle;" />
-                            <asp:HiddenField ID="hidId" Value='<%#Eval("id")%>' runat="server" />--%>
-                            <label class="checkall"><input type="checkbox" name="chkId" value="<%=ds.Tables[0].Rows[i]["id"] %>" /></label>
+                            <label class="checkall"><input type="checkbox" name="chkId" value="<%=item.id %>" /></label>
                         </td>
-                        <td><%=ds.Tables[0].Rows[i]["name"] %></td>
-                        <td><%=ds.Tables[0].Rows[i]["onenetnum"] %></td>
-                        <td><%=ds.Tables[0].Rows[i]["real_name"] %></td>
-                        <td><%=ds.Tables[0].Rows[i]["areaname"] %></td>
-                        <td><%=ds.Tables[0].Rows[i]["state"]==null?"":ds.Tables[0].Rows[i]["state"].ToString()=="1"?"锁定":ds.Tables[0].Rows[i]["state"].ToString()=="2"?"启用":"" %></td>
-                        <td><%=ds.Tables[0].Rows[i]["online"]==null?"":!Convert.ToBoolean(ds.Tables[0].Rows[i]["online"])?"离线":"在线" %></td>
-                        <td><%=getVal(AI,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerAI"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningAI"])) %>A</td>
-                        <td><%=getVal(BI,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerBI"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningBI"])) %>A</td>
-                        <td><%=getVal(CI,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerCI"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningCI"])) %>A</td>
-                        <td><%=getVal(LI,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerLI"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningLI"])) %>mA</td>
-                        <td><%=getVal(OneTemperature,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerOneTemperature"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningOneTemperature"])) %>℃</td>
-                        <td><%=getVal(TwoTemperature,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerTwoTemperature"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningTwoTemperature"])) %>℃</td>
-                        <td><%=getVal(ThreeTemperature,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerThreeTemperature"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningThreeTemperature"])) %>℃</td>
-                        <td><%=getVal(FourTemperature,Convert.ToDouble(ds.Tables[0].Rows[i]["trailerFourTemperature"]),Convert.ToDouble(ds.Tables[0].Rows[i]["warningFourTemperature"])) %>℃</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><%=ds.Tables[0].Rows[i]["updatetime"]!=DBNull.Value?Convert.ToDateTime(ds.Tables[0].Rows[i]["updatetime"]).ToString("yyyy-MM-dd HH:mm:ss"):"" %></td>
+                        <td><%=item.name %></td>
+                        <td><%=item.onenetnum%></td>
+                        <td><%=item.real_name %></td>
+                        <td><%=item.areaname %></td>
+                        <td><%=item.state==null?"":item.state==1?"锁定":item.state==2?"启用":"" %></td>
+                        <td><%=item.online?"在线":"离线" %></td>
+                        <td><%=getVal(item.AI,item.trailerAI,0) %>A</td>
+                        <td><%=getVal(item.BI,item.trailerBI,0) %>A</td>
+                        <td><%=getVal(item.CI,item.trailerCI,0) %>A</td>
+                        <td><%=getVal(item.LI,item.trailerLI,0) %>mA</td>
+                        <td><%=getVal(item.Temp1,item.trailerOneTemperature,0) %>℃</td>
+                        <td><%=getVal(item.Temp2,item.trailerTwoTemperature,0) %>℃</td>
+                        <td><%=getVal(item.Temp3,item.trailerThreeTemperature,0) %>℃</td>
+                        <td><%=getVal(item.Temp4,item.trailerFourTemperature,0) %>℃</td>
+                        <td><%=getVal(item.AU,item.trailerAV,0) %>V</td>
+                        <td><%=getVal(item.BU,item.trailerBV,0) %>V</td>
+                        <td><%=getVal(item.CU,item.trailerCV,0) %>V</td>
+                        <td><%=item.updatetime.HasValue?item.updatetime.Value.ToString("yyyy-MM-dd HH:mm:ss"):"" %></td>
                         <td align="center">
                             <%
                                 if (ChkAdminLevel_s("electricity_list", DTEnums.ActionEnum.Edit.ToString()))
                                 {
                                  %>
-                            <a href="javascript:openwin('编辑设备','electricity_add.aspx?action=<%=DTEnums.ActionEnum.Edit %>&id=<%=ds.Tables[0].Rows[i]["id"]%>',850,700)">修改</a> | 
+                            <a href="javascript:openwin('编辑设备','electricity_add.aspx?action=<%=DTEnums.ActionEnum.Edit %>&id=<%=item.id%>',850,700)">修改</a> |
                             <%
                                 }
                                  %>
-                            <a href="javascript:openwin('查看历史','history_list.aspx?id=<%=ds.Tables[0].Rows[i]["id"]%>',1000,700)">查看历史</a>
+                            <a href="javascript:openwin('查看历史','history_list.aspx?id=<%=item.id%>',1000,700)">查看历史</a>
                         </td>
-                        
+
                     </tr>
                 <%
         }
@@ -184,14 +163,13 @@
     else
     {
                      %>
-                        <tr><td align="center" colspan="13">暂无记录</td></tr>
+                        <tr><td align="center" colspan="20">暂无记录</td></tr>
                         <%
                             }
                              %>
-                
   </table>
- 
-            
+
+
             <!--/文字列表-->
         </div>
         <!--/列表-->

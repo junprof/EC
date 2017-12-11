@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dt_item.cs" />
+    <Compile Include="dt_msg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,10 +59,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DTcms.BLL\DTcms.BLL.csproj">
-      <Project>{0484f2ed-8ef3-4c40-8b3a-fe52b5e71ac2}</Project>
-      <Name>DTcms.BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DTcms.Common\DTcms.Common.csproj">
       <Project>{6468CBF1-9D41-4231-8814-14491922FECC}</Project>
       <Name>DTcms.Common</Name>
@@ -68,10 +66,6 @@
     <ProjectReference Include="..\DTcms.DBUtility\DTcms.DBUtility.csproj">
       <Project>{80541f63-161f-45cd-9710-cd1ea08f1d67}</Project>
       <Name>DTcms.DBUtility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DTcms.Model\DTcms.Model.csproj">
-      <Project>{d67868c9-56b9-4e35-8e15-c105fc44cfb9}</Project>
-      <Name>DTcms.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
