@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "设备管理";
+    Layout = "~/Views/Shared/_C1.cshtml";
+}
+<div id="floatHeads" class="toolbar-wrap" style="padding: 10px 0; width: 100%; *position: relative; *z-index: 1;">
+    <div class="toolbar">
+        <div class="box-wrap">
+            <a class="menu-btn"></a>
+            <div class="l-list">
+                <ul class="icon-list">
+                    <li><a id="btn_add" class="add" href="javascript:openwin('新增设备','electricity_add.aspx?action=<%=DTcms.Common.DTEnums.ActionEnum.Add %>',850,700)"><i></i><span>新增</span></a></li>
+                    @*<li><a class="all" lay-filter="allChoose" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+    <li>
+        <asp:LinkButton ID="btnLock" runat="server" CssClass="save"
+                        OnClientClick="return ExePostBack1('btnLock','批量锁定');" OnClick="btnLock_Click"><i></i><span>批量锁定</span></asp:LinkButton>
+    </li>
+    <li>
+        <asp:LinkButton ID="btnOpen" runat="server" CssClass="save"
+                        OnClientClick="return ExePostBack1('btnOpen','批量启用');" OnClick="btnOpen_Click"><i></i><span>批量启用</span></asp:LinkButton>
+    </li>
+    <li>
+        <asp:LinkButton ID="btnDel" runat="server" CssClass="del"
+                        OnClientClick="return ExePostBack1('btnDel','批量删除');" OnClick="btnDel_Click"><i></i><span>批量删除</span></asp:LinkButton>
+    </li>*@
+
+                </ul>
+                <div style="float: left;">
+                    <select name="ddlState" id="ddlState">
+                        <option selected="selected" value="">启用状态</option>
+                        <option value="1">锁定</option>
+                        <option value="2">启用</option>
+                    </select>
+                </div>
+                <div style="float: left;">
+                    <select name="ddlOnLine" id="ddlOnLine">
+                        <option selected="selected" value="">在线状态</option>
+                        <option value="1">在线</option>
+                        <option value="0">离线</option>
+                    </select>
+                </div>
+                <div class="layui-form-item" style="float: left;">
+                    <div class="layui-input-inline">
+                        <select name="quiz1" data-lev="0">
+                            <option value="">请选择省</option>
+                            <option value="浙江" selected="">浙江省</option>
+                            <option value="你的工号">江西省</option>
+                            <option value="你最喜欢的老师">福建省</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="quiz2" data-lev="1">
+                            <option value="">请选择市</option>
+                            <option value="杭州">杭州</option>
+                            <option value="宁波" disabled="">宁波</option>
+                            <option value="温州">温州</option>
+                            <option value="温州">台州</option>
+                            <option value="温州">绍兴</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="quiz3" data-lev="2">
+                            <option value="">请选择县/区</option>
+                            <option value="西湖区">西湖区</option>
+                            <option value="余杭区">余杭区</option>
+                            <option value="拱墅区">临安市</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="r-list">
+                <input type="text" class="keyword"/><button class="btn-search">查询</button>
+            </div>
+        </div>
+    </div>
+</div>
+

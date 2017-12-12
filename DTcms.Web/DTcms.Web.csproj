@@ -745,6 +745,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Account\Avatar.cshtml" />
+    <Content Include="Views\Shared\_C1.cshtml" />
+    <Content Include="Views\Electricity\Electricity_list.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\center.aspx.cs">
@@ -888,6 +890,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiBaseController.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
+    <Compile Include="Controllers\MVCbaseController.cs" />
+    <Compile Include="Controllers\ElectricityController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PictureViewerController.cs" />

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="author" content="AF">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/admin/skin/default/style.css" rel="stylesheet" />
+    <link href="~/Skin/layui/css/layui.css" rel="stylesheet" />
+</head>
+<body class="mainbody layui-layout-body">
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="~/admin/center.aspx" class="home"><i></i><span>首页</span></a>
+        <i class="arrow"></i>
+        <span>@ViewBag.Title</span>
+    </div>
+    <form id="form1" class="layui-form">
+        <div class="layui-body">
+            @RenderBody()
+        </div>
+    </form>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script src="~/Skin/layui/layui.js"></script>
+    <script>
+        layui.use(['form'], function () {
+            var form = layui.form()
+            , layer = layui.layer;
+        });
+    </script>
+</body>
+</html>
