@@ -1,4 +1,7 @@
-﻿namespace DTcms.Common
+﻿using Newtonsoft.Json;
+using System;
+
+namespace DTcms.Common
 {
     public class JsonHelper2
     {

@@ -200,5 +200,81 @@ namespace DTcms.Web.Controllers
             }
             return Json(resObj);
         }
+        [HttpPost]
+        [Route("GetMutiReport")]
+        public HttpResponseMessage GetMutiReport([FromBody]Model.ReportParam param)
+        {
+            if (!param.item_id.HasValue)
+            {
+                resObj = new Model.BaseResponse(1, "无效设备");
+            }
+            if (!param.dim_id.HasValue)
+            {
+                resObj = new Model.BaseResponse(1, "未知维度");
+            }
+            if (resObj.error == 0)
+            {
+                string where = " 1=1 ";
+                if (!param.starttime.HasValue || !param.endtime.HasValue)
+                {
+                    where += " and a.updatetime >= '" + DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd HH:mm:ss") + "' ";
+                }
+                else {
+                    where += " and a.updatetime >= '" + param.starttime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' and a.updatetime <= '" + param.endtime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                }
+                if (!string.IsNullOrEmpty(param.hid))
+                {
+                    var h = new BLL.dt_historydata().GetModel(new Guid(param.hid));
+                    if (h != null)
+                    {
+                        where += " and a.updatetime >= '" + h.updatetime.Value.AddHours(-12).ToString("yyyy-MM-dd HH:mm:ss") + "' and a.updatetime <= '" + h.updatetime.Value.AddHours(12).ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                    }
+                    new BLL.dt_msg().SetReaded(param.msgid);
+                }
+                BLL.dt_dimensioninfo bll = new BLL.dt_dimensioninfo();
+                var data = bll.GetModelList($"{where} and a.dimension={param.dim_id} and b.item_id = '{param.item_id}'");
+                string newwhere = " 1=1 ";
+                if (param.endtime.HasValue)
+                    newwhere += " and a.updatetime >= '" + param.endtime.Value.AddHours(-1).ToString("yyyy-MM-dd HH:mm:ss") + "' and a.updatetime <= '" + param.endtime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                var data2 = bll.GetModelList($"{newwhere} and a.dimension={param.dim_id} and b.item_id = '{param.item_id}'");
+                if (data.Count == 0)
+                {
+                    resObj = new Model.BaseResponse(1, "无数据");
+                }
+                else {
+
+                    var ex = from p in data
+                             group p by p.updatetime.ToString("yyyy-MM-dd") into g
+                             select new Model.ReportData
+                             {
+                                 time = Convert.ToDateTime(g.Key),
+                                 value = g.Max(p => p.value)
+                             };
+                    var ex2 = from p in data
+                             group p by p.updatetime.ToString("yyyy-MM-dd HH:00:00") into g
+                             select new Model.ReportData
+                             {
+                                 time = Convert.ToDateTime(g.Key),
+                                 value = g.Max(p => p.value)
+                             };
+                    var ex3 = from p in data2
+                             group p by p.updatetime.ToString("yyyy-MM-dd HH:mm:00") into g
+                             select new Model.ReportData
+                             {
+                                 time = Convert.ToDateTime(g.Key),
+                                 value = g.Max(p => p.value)
+                             };
+                    var ex4 = from p in data2.Where(c=>c.updatetime>=data2.Max(d=>d.updatetime).AddMinutes(-20))
+                              group p by p.updatetime.ToString("yyyy-MM-dd HH:mm:00") into g
+                              select new Model.ReportData
+                              {
+                                  time = Convert.ToDateTime(g.Key),
+                                  value = g.Max(p => p.value)
+                              };
+                    resObj.data = new { MessageCount = new BLL.dt_msg().GetUnRecordCount(CurrentUser.USERID), ReportData_DD = ex.OrderBy(p => p.time).ToList(), ReportData_HH = ex2.OrderBy(p => p.time).ToList(), ReportData_mm = ex3.OrderBy(p => p.time).ToList(), ReportData_mm2 = ex4.OrderBy(p => p.time).ToList() };
+                }
+            }
+            return Json(resObj);
+        }
     }
 }

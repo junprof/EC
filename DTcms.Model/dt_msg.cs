@@ -37,10 +37,10 @@ namespace DTcms.Model
         ///
         /// </summary>
         public bool state { get; set; }
-        public int? ISPROCESSED { get; set; }
-        public string REMARK { get; set; }
+        public int? ISPROCESSED { get; set; } = 0;
+        public string REMARK { get; set; } = string.Empty;
 
-        public string content { get; set; }
+        public string content { get; set; } = string.Empty;
         public int dim_id { get; set; }
     }
     public class msg_adq
@@ -51,9 +51,9 @@ namespace DTcms.Model
     }
     public class MsgExtend:dt_msg
     {
-        public string itemname { get; set; }
-		public string position {get;set;}
-        public string processed_name { get { return ISPROCESSED == 0 ? "未处理" : "已处理"; } }
+        public string itemname { get; set; } = string.Empty;
+		public string position {get;set; } = string.Empty;
+        public string processed_name { get { return ISPROCESSED == 1 ? "已处理" : "未处理"; } }
 
     }
 }
