@@ -6,13 +6,13 @@ using DTcms.Common;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("DTcms Web UI DLL")]
-[assembly: AssemblyDescription("DTcms UI层类库")]
+[assembly: AssemblyTitle("AF Web UI DLL")]
+[assembly: AssemblyDescription("AF UI层类库")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DTcms")]
-[assembly: AssemblyProduct("DTcms V" + DTKeys.ASSEMBLY_VERSION + " (.NET Framework 4.0)")]
-[assembly: AssemblyCopyright("Copyright 2009 - " + DTKeys.ASSEMBLY_YEAR + " dtsoft.net. All Rights Reserved.")]
-[assembly: AssemblyTrademark("DTcms")]
+[assembly: AssemblyCompany("AF")]
+[assembly: AssemblyProduct("AF V" + DTKeys.ASSEMBLY_VERSION)]
+[assembly: AssemblyCopyright("Copyright 2017 - " + DTKeys.ASSEMBLY_YEAR + " AF.net. All Rights Reserved.")]
+[assembly: AssemblyTrademark("AF")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型

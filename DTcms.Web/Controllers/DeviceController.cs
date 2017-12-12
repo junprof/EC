@@ -160,7 +160,7 @@ namespace DTcms.Web.Controllers
                     var h = new BLL.dt_historydata().GetModel(new Guid(param.hid));
                     if (h != null)
                     {
-                        where += " and a.updatetime >= '" + h.updatetime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' and a.updatetime <= '" + param.endtime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                        where += " and a.updatetime >= '" + h.updatetime.Value.AddHours(-12).ToString("yyyy-MM-dd HH:mm:ss") + "' and a.updatetime <= '" + h.updatetime.Value.AddHours(12).ToString("yyyy-MM-dd HH:mm:ss") + "'";
                     }
                     new BLL.dt_msg().SetReaded(param.msgid);
                 }

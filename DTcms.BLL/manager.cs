@@ -105,23 +105,31 @@ namespace DTcms.BLL
             }
             return dal.GetModel(user_name, password);
         }
-        public Model.BaseResponse ChangePwd(string username,string password)
+        public Model.BaseResponse ChangePwd(string username,string password,string phone)
         {
             Model.BaseResponse res = new Model.BaseResponse();
             try {
-
-                string salt = dal.GetSalt(username);
-                string newpassword = DESEncrypt.Encrypt(password, salt);
-                var r = dal.ChangePwd(username, newpassword);
-                if(!r)
+                var m = dal.GetModel(username);
+                if (m.telephone == phone)
                 {
-                    res.error = 1;
-                    res.data = "修改失败";
+                    string salt = m.salt;
+                    string newpassword = DESEncrypt.Encrypt(password, salt);
+                    var r = dal.ChangePwd(username, newpassword);
+                    if (!r)
+                    {
+                        res.error = 1;
+                        res.data = "修改失败";
+                    }
+                    else
+                    {
+                        res.error = 0;
+                        res.data = "修改成功";
+                    }
                 }
                 else
                 {
-                    res.error = 0;
-                    res.data = "修改成功";
+                    res.error = 1;
+                    res.data = "手机号非帐号绑定的号码";
                 }
             }
             catch(Exception ex)

@@ -128,9 +128,9 @@ namespace DTcms.Model
             get { return _warningval; }
         }
         #endregion Model
-        public double AU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(42, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
-        public double BU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(46, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
-        public double CU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(14, 4).Substring(2) + _value.Substring(50, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double AU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(42, 4).Substring(2) + _value.Substring(42, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double BU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(46, 4).Substring(2) + _value.Substring(46, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
+        public double CU { get { return Math.Round(string.IsNullOrEmpty(_value) ? 0 : Int32.Parse(_value.Substring(50, 4).Substring(2) + _value.Substring(50, 4).Substring(0, 2), System.Globalization.NumberStyles.HexNumber) * 0.1, 2); } }
         public double DU { get; }
         public double EU { get; }
         public double FU { get; }

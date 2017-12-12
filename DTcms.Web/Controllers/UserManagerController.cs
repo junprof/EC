@@ -54,7 +54,7 @@ namespace DTcms.Web.Controllers
             resObj = (BLL.VCode.Instance.CheckCode(md.PHONE, 1, md.CODE));
             if (resObj.error == 0)
             {
-                resObj = new BLL.manager().ChangePwd(md.USERNAME, md.PASSWORD);
+                resObj = new BLL.manager().ChangePwd(md.USERNAME, md.PASSWORD,md.PHONE);
             }
             return Json(resObj);
         }

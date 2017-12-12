@@ -10,11 +10,11 @@ namespace DTcms.Common
         /// <summary>
         /// 版本号全称
         /// </summary>
-        public const string ASSEMBLY_VERSION = "4.0.0";
+        public const string ASSEMBLY_VERSION = "1.3.5";
         /// <summary>
         /// 版本年号
         /// </summary>
-        public const string ASSEMBLY_YEAR = "2015";
+        public const string ASSEMBLY_YEAR = "2018";
         //File======================================================
         /// <summary>
         /// 插件配制文件名
